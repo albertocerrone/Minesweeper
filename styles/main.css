@@ -64,7 +64,7 @@ body {
 }
 
 .covered {
-  background-color: darkgray;
+  background-color: black;
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
@@ -73,7 +73,6 @@ body {
   background-color: lightgray;
   background-repeat: no-repeat;
   background-size: contain;
-  cursor: pointer;
 }
 .flagged {
   background-image: url("../assets/pika-sprite.png");

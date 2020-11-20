@@ -44,15 +44,17 @@ function init() {
       const cell = document.createElement('div')
       cell.textContent = i
       grid.appendChild(cell)
-      cells.push(cell)       //I should push objects with this info: hasCovered= true hasBomb:false haveflag:false bombsCloser: 0
+      cells.push(cell)       //maybe I don't need this anymore
+      cellsStatusInfo.push(new CellInfo(i, true, false, false, 0))
     }
   }
-console.log(cells)
-  function randomBombPosition(){
-    for (let i = 0; i < cellCount; i++){
+console.log(cellsStatusInfo)
 
-    }
-  }
+  // function randomBombPosition(){
+  //   for (let i = 0; i < cellCount; i++){
+
+  //   }
+  // }
 
 
   //*Event listeners

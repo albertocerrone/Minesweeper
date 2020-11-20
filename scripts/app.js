@@ -25,15 +25,15 @@ function init() {
   const height = 9
   const cellCount = width * height
   const nBombs = 10
-  const cells = []    //maybe I can add it to the classStatusInfo
   const cellsStatusInfo = []
   const firstClick = true //! this have to change after the first click
 
   //* Creating a Class to produce Object where I store info about the cell (if there is a bomb? or covered? etc)
 
   class CellInfo{
-    constructor (idCell, isCovered, haveBomb, haveFlag, nBombsClose){
+    constructor (idCell, cell, isCovered, haveBomb, haveFlag, nBombsClose){
       this.idCell = idCell           //same as i in createGrid
+      this.cell = cell                //this store the div in the system
       this.isCovered = isCovered            //t||f
       this.haveBomb = haveBomb             //t||f
       this.haveFlag = haveFlag            //t||f
@@ -48,18 +48,19 @@ function init() {
   function createGrid() {                   //This function create the cells in the grid with status of covered
     for (let i = 0; i < cellCount; i++) {
       const cell = document.createElement('div')
+      cell.innerHTML = i  //! to remove
       cell.dataset.id = i 
-      cell.classList.add('covered')
+      // cell.classList.add('covered') //! To put it back
       grid.appendChild(cell)
-      cells.push(cell)       //maybe I don't need this anymore
-      cellsStatusInfo.push(new CellInfo(i, true, false, false, 0))
+      cellsStatusInfo.push(new CellInfo(i, cell, true, false, false, 0))
     }
   }
 
   function uncoverCell(event){              //This function change the class of the clicked cell from covered to uncovered
     const selected = event.target.dataset.id
     cellsStatusInfo[selected].isCovered = false
-    cellsStatusInfo[selected].classList.remove('covered')
+    cellsStatusInfo[selected].cell.classList.remove('covered')
+    // console.log(cellsStatusInfo)
   }
 
   // function randomBombPosition(){
@@ -70,11 +71,11 @@ function init() {
 
   //! Tests...To remove at the end
   console.log(cellsStatusInfo)
-  console.log(cellsStatusInfo)
+  
 
   //*Event listeners
   createGrid()
-  cells.forEach(cell => 
-    cell.addEventListener('click', uncoverCell))
+  cellsStatusInfo.forEach(cells => 
+    cells.cell.addEventListener('click', uncoverCell))
 }
 window.addEventListener('DOMContentLoaded',init)

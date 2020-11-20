@@ -82,7 +82,7 @@ body {
   cursor: pointer;
 }
 .bomb {
-  background-image: url("../assets/img/Minewsweeper_Icon.png");
+  background-color: red;
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;

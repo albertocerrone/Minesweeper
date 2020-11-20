@@ -48,11 +48,11 @@ function init() {
   function createGrid() {                   //This function create the cells in the grid with status of covered
     for (let i = 0; i < cellCount; i++) {
       const cell = document.createElement('div')
-      cell.innerHTML = i  //! to remove
       cell.dataset.id = i 
       // cell.classList.add('covered') //! To put it back
       grid.appendChild(cell)
       cellsStatusInfo.push(new CellInfo(i, cell, true, false, false, 0))
+      cell.innerHTML = cellsStatusInfo[i].nBombsClose  //! to remove
     }
   }
 
@@ -71,14 +71,38 @@ function init() {
       if (cellsStatusInfo[randomIndex].haveBomb === false){
         cellsStatusInfo[randomIndex].haveBomb = true
         cellsStatusInfo[randomIndex].cell.classList.add('bomb')
+        bombsCloseToMe(randomIndex)
         bombsPlaced++
       }
     }
   }
 
-  function bombsCloseToMe(index){
+  function bombsCloseToMe(indexofthebomb){
 
-    cellsStatusInfo[index]
+    const  columnOfTheBomb = indexofthebomb % width                   //these return me the row where the bomb is located
+    const rowOfTheBomb = Math.floor(indexofthebomb / width)
+
+    console.log(indexofthebomb, columnOfTheBomb)
+    // console.log(verticalPosition)
+
+    // up-left corner
+
+    // cellsStatusInfo[indexofthebomb - cellFar].nBombsClose++
+
+    // up-center 
+    //up-right
+    //left
+    if (columnOfTheBomb > 0){
+      //! add here code increase nBombsClose++
+    }
+    //right
+    if (columnOfTheBomb < width - 1){
+      //! add here code increase nBombsClose++
+    }
+    //down-left
+    //down-center
+    //down-right
+    
 
   }
   

@@ -63,11 +63,18 @@ function init() {
     // console.log(cellsStatusInfo)
   }
 
-  // function randomBombPosition(){
-  //   for (let i = 0; i < cellCount; i++){
 
-  //   }
-  // }
+  function randomBombPosition(){      //This function allocate randomly the bombs in the field
+    let bombsPlaced = 0
+    while (bombsPlaced < nBombs) {
+      const randomIndex = Math.floor(Math.random() * cellCount)
+      if (cellsStatusInfo[randomIndex].haveBomb === false){
+        cellsStatusInfo[randomIndex].haveBomb = true
+        cellsStatusInfo[randomIndex].cell.classList.add('bomb')
+        bombsPlaced++
+      }
+    }
+  }
 
   //! Tests...To remove at the end
   console.log(cellsStatusInfo)
@@ -75,6 +82,8 @@ function init() {
 
   //*Event listeners
   createGrid()
+  randomBombPosition()
+
   cellsStatusInfo.forEach(cells => 
     cells.cell.addEventListener('click', uncoverCell))
 }

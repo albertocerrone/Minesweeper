@@ -63,7 +63,7 @@ body {
   visibility: hidden;
 }
 
-.covered {
+.grid-wrapper > .grid > .covered {
   background-color: black;
   background-repeat: no-repeat;
   background-size: contain;
@@ -82,7 +82,4 @@ body {
 }
 .bomb {
   background-color: red;
-  background-repeat: no-repeat;
-  background-size: contain;
-  cursor: pointer;
 }

@@ -52,7 +52,7 @@ function init() {
       // cell.classList.add('covered') //! To put it back
       grid.appendChild(cell)
       cellsStatusInfo.push(new CellInfo(i, cell, true, false, false, 0))
-      cell.innerHTML = cellsStatusInfo[i].nBombsClose  //! to remove
+      cell.innerHTML = i//cellsStatusInfo[i].nBombsClose  //! to remove i 
     }
   }
 
@@ -76,34 +76,67 @@ function init() {
       }
     }
   }
+  
 
-  function bombsCloseToMe(indexofthebomb){
-
+  function bombsCloseToMe(indexofthebomb){         // this function find how many bombs are close to every cell
     const  columnOfTheBomb = indexofthebomb % width                   //these return me the row where the bomb is located
     const rowOfTheBomb = Math.floor(indexofthebomb / width)
 
+    let cellDistance
+
     console.log(indexofthebomb, columnOfTheBomb)
-    // console.log(verticalPosition)
-
     // up-left corner
-
-    // cellsStatusInfo[indexofthebomb - cellFar].nBombsClose++
-
-    // up-center 
+    if (rowOfTheBomb > 0 && columnOfTheBomb > 0) {
+      cellDistance = -(width + 1)
+      cellsStatusInfo[indexofthebomb + cellDistance].nBombsClose++
+      console.log(cellsStatusInfo[indexofthebomb + cellDistance])
+    }
+      
+    // up-center
+    if (rowOfTheBomb > 0) {
+      cellDistance = -(width)
+      cellsStatusInfo[indexofthebomb + cellDistance].nBombsClose++
+      console.log(cellsStatusInfo[indexofthebomb + cellDistance])
+      
+    } 
     //up-right
+    if (rowOfTheBomb > 0 && columnOfTheBomb < width - 1) {
+      cellDistance = -(width - 1)
+      cellsStatusInfo[indexofthebomb + cellDistance].nBombsClose++
+      console.log(cellsStatusInfo[indexofthebomb + cellDistance])
+      
+    } 
     //left
     if (columnOfTheBomb > 0){
-      //! add here code increase nBombsClose++
+      cellDistance =  - 1
+      cellsStatusInfo[indexofthebomb + cellDistance].nBombsClose++
+      console.log(cellsStatusInfo[indexofthebomb + cellDistance])
     }
     //right
     if (columnOfTheBomb < width - 1){
-      //! add here code increase nBombsClose++
+      cellDistance = + 1
+      cellsStatusInfo[indexofthebomb + cellDistance].nBombsClose++
+      console.log(cellsStatusInfo[indexofthebomb + cellDistance])
     }
     //down-left
+    if (rowOfTheBomb < height - 1 && columnOfTheBomb > 0) {
+      cellDistance = width - 1
+      cellsStatusInfo[indexofthebomb + cellDistance].nBombsClose++
+      console.log(cellsStatusInfo[indexofthebomb + cellDistance])
+    }
     //down-center
+    if (rowOfTheBomb < height - 1) {
+      cellDistance = width
+      cellsStatusInfo[indexofthebomb + cellDistance].nBombsClose++
+      console.log(cellsStatusInfo[indexofthebomb + cellDistance])
+    }
     //down-right
-    
-
+    if (rowOfTheBomb < height - 1 && columnOfTheBomb < width - 1) {
+      cellDistance = width + 1
+      cellsStatusInfo[indexofthebomb + cellDistance].nBombsClose++
+      console.log(cellsStatusInfo[indexofthebomb + cellDistance])
+    }
+  
   }
   
 

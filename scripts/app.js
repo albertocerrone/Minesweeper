@@ -49,10 +49,10 @@ function init() {
     for (let i = 0; i < cellCount; i++) {
       const cell = document.createElement('div')
       cell.dataset.id = i 
-      // cell.classList.add('covered') //! To put it back
+      cell.classList.add('covered') //! To put it back
       grid.appendChild(cell)
       cellsStatusInfo.push(new CellInfo(i, cell, true, false, false, 0))
-      cell.innerHTML = i//cellsStatusInfo[i].nBombsClose  //! to remove i 
+      cell.innerHTML = cellsStatusInfo[i].nBombsClose  //! to remove i 
     }
   }
 
@@ -60,6 +60,8 @@ function init() {
     const selected = event.target.dataset.id
     cellsStatusInfo[selected].isCovered = false
     cellsStatusInfo[selected].cell.classList.remove('covered')
+    cellsStatusInfo[selected].cell.innerHTML = cellsStatusInfo[selected].nBombsClose
+
     // console.log(cellsStatusInfo)
   }
 

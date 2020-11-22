@@ -40,7 +40,10 @@ function init() {
       this.haveBomb = haveBomb             //t||f
       this.haveFlag = haveFlag            //t||f
       this.nBombsClose = nBombsClose      //this will count the n of bombs around
+      
+    
     }
+    
     //? function for add bombs here?
     //? function for count the bombs around here?
   }
@@ -60,18 +63,34 @@ function init() {
     }
   }
 
-  function uncoverCell(event){              //This function change the class of the clicked cell from covered to uncovered
-    const selected = event.target.dataset.id
+  function uncoverCell(selected){              //This function change the class of the clicked cell from covered to uncovered
     cellsStatusInfo[selected].isCovered = false
     cellsStatusInfo[selected].cell.classList.remove('covered')
     cellsStatusInfo[selected].cell.innerHTML = cellsStatusInfo[selected].nBombsClose
+    console.log(cellsStatusInfo[selected].idCell)
+    revealCellsAround(selected)
 
     // console.log(cellsStatusInfo)
   }
 
-  // function revealCellsAround (){
-  //   for (let i = )
-  // }
+  function revealCellsAround (index){
+    for (let c = cellsStatusInfo[index].column - 1; c <= cellsStatusInfo[index].column + 1; c++ ){
+      if (c >= 0 && c < width){
+        for (let r = cellsStatusInfo[index].row - 1; r <= cellsStatusInfo[index].row + 1; r++ ){
+          if (r >= 0 && r < height) {
+            console.log(cellsStatusInfo[index - width - 1])
+            // if (cellsStatusInfo[nextIndex].nBombsClose === 0){
+            //   revealCellsAround(nextIndex)
+            // }
+            //uncoverCell(nextIndex)
+            
+          }
+          
+        }
+      }
+      
+    }
+  }
 
 
 
@@ -89,53 +108,68 @@ function init() {
   }
   
 
-  function bombsCloseToMe(indexofthebomb){         // this function find how many bombs are close to every cell
-    const  columnOfTheBomb = cellsStatusInfo[indexofthebomb].column    //these return me the column where the bomb is located
-    const rowOfTheBomb = cellsStatusInfo[indexofthebomb].row        //these return me the row where the bomb is located
+  function bombsCloseToMe(indexOfTheBomb){ // this function find how many bombs are close to every cell
+
+    const nearby = whoIsCloseToMe(indexOfTheBomb)
+    for (let i = 0; i < nearby.length; i++){
+      cellsStatusInfo[nearby[i]].nBombsClose++
+    }
+
+  }
+
+  function whoIsCloseToMe(index){         // this function returns an array of cell close to the given index
+    const  column = cellsStatusInfo[index].column    //these return me the column 
+    const row = cellsStatusInfo[index].row        //these return me the row 
     let cellDistance
+    const closeToMe = []
     // up-left corner
-    if (rowOfTheBomb > 0 && columnOfTheBomb > 0) {
+    if (row > 0 && column > 0) {
       cellDistance = -(width + 1)
-      cellsStatusInfo[indexofthebomb + cellDistance].nBombsClose++
+      closeToMe.push(cellsStatusInfo[index + cellDistance].idCell)
     }  
     // up-center
-    if (rowOfTheBomb > 0) {
+    if (row > 0) {
       cellDistance = -(width)
-      cellsStatusInfo[indexofthebomb + cellDistance].nBombsClose++    
+      closeToMe.push(cellsStatusInfo[index + cellDistance].idCell)   
     } 
     //up-right
-    if (rowOfTheBomb > 0 && columnOfTheBomb < width - 1) {
+    if (row > 0 && column < width - 1) {
       cellDistance = -(width - 1)
-      cellsStatusInfo[indexofthebomb + cellDistance].nBombsClose++    
+      closeToMe.push(cellsStatusInfo[index + cellDistance].idCell)   
     } 
     //left
-    if (columnOfTheBomb > 0){
+    if (column > 0){
       cellDistance =  - 1
-      cellsStatusInfo[indexofthebomb + cellDistance].nBombsClose++
+      closeToMe.push(cellsStatusInfo[index + cellDistance].idCell)
     }
     //right
-    if (columnOfTheBomb < width - 1){
+    if (column < width - 1){
       cellDistance = + 1
-      cellsStatusInfo[indexofthebomb + cellDistance].nBombsClose++
+      closeToMe.push(cellsStatusInfo[index + cellDistance].idCell)
     }
     //down-left
-    if (rowOfTheBomb < height - 1 && columnOfTheBomb > 0) {
+    if (row < height - 1 && column > 0) {
       cellDistance = width - 1
-      cellsStatusInfo[indexofthebomb + cellDistance].nBombsClose++
+      closeToMe.push(cellsStatusInfo[index + cellDistance].idCell)
     }
     //down-center
-    if (rowOfTheBomb < height - 1) {
+    if (row < height - 1) {
       cellDistance = width
-      cellsStatusInfo[indexofthebomb + cellDistance].nBombsClose++
+      closeToMe.push(cellsStatusInfo[index + cellDistance].idCell)
     }
     //down-right
-    if (rowOfTheBomb < height - 1 && columnOfTheBomb < width - 1) {
+    if (row < height - 1 && column < width - 1) {
       cellDistance = width + 1
-      cellsStatusInfo[indexofthebomb + cellDistance].nBombsClose++
+      closeToMe.push(cellsStatusInfo[index + cellDistance].idCell)
     }
+    return closeToMe
   }
   
 
+  function game (event){
+    const selected = event.target.dataset.id
+    uncoverCell(selected)
+  }
 
 
   //! Tests...To remove at the end
@@ -145,8 +179,9 @@ function init() {
   //*Event listeners
   createGrid()
   randomBombPosition()
+  console.log(whoIsCloseToMe(15))
 
   cellsStatusInfo.forEach(cells => 
-    cells.cell.addEventListener('click', uncoverCell))
+    cells.cell.addEventListener('click', game))
 }
 window.addEventListener('DOMContentLoaded',init)

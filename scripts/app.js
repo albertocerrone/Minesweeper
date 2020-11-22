@@ -2,7 +2,7 @@
 // TODO F to handle 3 levels of gaming: -Beginner 9*9 10bombs  -Intermediate 16*16 40bombs -Expert 30*16 99bombs (use Object)
 // TODO Function Reset (to use every time the game start and when user click on the button with the face)
 // // TODO Function to create random bombs position
-// TODO Function to count how many bombs are around (this works just if firstClick = true and after bombs are place and before function to show the clicked cell and nearby)
+// // TODO Function to count how many bombs are around (this works just if firstClick = true and after bombs are place and before function to show the clicked cell and nearby)
 // TODO Function to show the clicked cell and nearby
 // TODO Function game lost
 
@@ -31,9 +31,11 @@ function init() {
   //* Creating a Class to produce Object where I store info about the cell (if there is a bomb? or covered? etc)
 
   class CellInfo{
-    constructor (idCell, cell, isCovered, haveBomb, haveFlag, nBombsClose){
+    constructor (idCell, cell, column, row, isCovered, haveBomb, haveFlag, nBombsClose){
       this.idCell = idCell           //same as i in createGrid
       this.cell = cell                //this store the div in the system
+      this.column = column            //this track the column
+      this.row = row                    // this track the row
       this.isCovered = isCovered            //t||f
       this.haveBomb = haveBomb             //t||f
       this.haveFlag = haveFlag            //t||f
@@ -51,8 +53,10 @@ function init() {
       cell.dataset.id = i 
       cell.classList.add('covered') //! To put it back
       grid.appendChild(cell)
-      cellsStatusInfo.push(new CellInfo(i, cell, true, false, false, 0))
-      cell.innerHTML = cellsStatusInfo[i].nBombsClose  //! to remove i 
+      const column = i % width
+      const row = Math.floor(i / width)
+      cellsStatusInfo.push(new CellInfo(i, cell, column, row, true, false, false, 0))
+      //cell.innerHTML = cellsStatusInfo[i].nBombsClose  //! to remove  
     }
   }
 
@@ -64,6 +68,11 @@ function init() {
 
     // console.log(cellsStatusInfo)
   }
+
+  // function revealCellsAround (){
+  //   for (let i = )
+  // }
+
 
 
   function randomBombPosition(){      //This function allocate randomly the bombs in the field
@@ -81,64 +90,49 @@ function init() {
   
 
   function bombsCloseToMe(indexofthebomb){         // this function find how many bombs are close to every cell
-    const  columnOfTheBomb = indexofthebomb % width                   //these return me the row where the bomb is located
-    const rowOfTheBomb = Math.floor(indexofthebomb / width)
-
+    const  columnOfTheBomb = cellsStatusInfo[indexofthebomb].column    //these return me the column where the bomb is located
+    const rowOfTheBomb = cellsStatusInfo[indexofthebomb].row        //these return me the row where the bomb is located
     let cellDistance
-
-    console.log(indexofthebomb, columnOfTheBomb)
     // up-left corner
     if (rowOfTheBomb > 0 && columnOfTheBomb > 0) {
       cellDistance = -(width + 1)
       cellsStatusInfo[indexofthebomb + cellDistance].nBombsClose++
-      console.log(cellsStatusInfo[indexofthebomb + cellDistance])
-    }
-      
+    }  
     // up-center
     if (rowOfTheBomb > 0) {
       cellDistance = -(width)
-      cellsStatusInfo[indexofthebomb + cellDistance].nBombsClose++
-      console.log(cellsStatusInfo[indexofthebomb + cellDistance])
-      
+      cellsStatusInfo[indexofthebomb + cellDistance].nBombsClose++    
     } 
     //up-right
     if (rowOfTheBomb > 0 && columnOfTheBomb < width - 1) {
       cellDistance = -(width - 1)
-      cellsStatusInfo[indexofthebomb + cellDistance].nBombsClose++
-      console.log(cellsStatusInfo[indexofthebomb + cellDistance])
-      
+      cellsStatusInfo[indexofthebomb + cellDistance].nBombsClose++    
     } 
     //left
     if (columnOfTheBomb > 0){
       cellDistance =  - 1
       cellsStatusInfo[indexofthebomb + cellDistance].nBombsClose++
-      console.log(cellsStatusInfo[indexofthebomb + cellDistance])
     }
     //right
     if (columnOfTheBomb < width - 1){
       cellDistance = + 1
       cellsStatusInfo[indexofthebomb + cellDistance].nBombsClose++
-      console.log(cellsStatusInfo[indexofthebomb + cellDistance])
     }
     //down-left
     if (rowOfTheBomb < height - 1 && columnOfTheBomb > 0) {
       cellDistance = width - 1
       cellsStatusInfo[indexofthebomb + cellDistance].nBombsClose++
-      console.log(cellsStatusInfo[indexofthebomb + cellDistance])
     }
     //down-center
     if (rowOfTheBomb < height - 1) {
       cellDistance = width
       cellsStatusInfo[indexofthebomb + cellDistance].nBombsClose++
-      console.log(cellsStatusInfo[indexofthebomb + cellDistance])
     }
     //down-right
     if (rowOfTheBomb < height - 1 && columnOfTheBomb < width - 1) {
       cellDistance = width + 1
       cellsStatusInfo[indexofthebomb + cellDistance].nBombsClose++
-      console.log(cellsStatusInfo[indexofthebomb + cellDistance])
     }
-  
   }
   
 

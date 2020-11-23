@@ -83,8 +83,17 @@ function init() {
     if (cellsStatusInfo[selected].nBombsClose === 0){
       revealCellsAround(selected)
     } 
+  }
 
-    // console.log(cellsStatusInfo)
+  function removeAllBombs(){
+    for (let i = 0; i < cellCount; i++){
+      cellsStatusInfo[i].nBombsClose = 0
+      if (cellsStatusInfo[i].haveBomb === true){
+        cellsStatusInfo[i].haveBomb = false
+        cellsStatusInfo[i].cell.classList.remove('bomb')       
+      }
+    }
+    
   }
 
   function randomBombPosition(){      //This function allocate randomly the bombs in the field

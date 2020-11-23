@@ -53,7 +53,7 @@ function init() {
     for (let i = 0; i < cellCount; i++) {
       const cell = document.createElement('div')
       cell.dataset.id = i 
-      cell.classList.add('covered') //! To put it back
+      cell.classList.add('covered') 
       grid.appendChild(cell)
       const column = i % width
       const row = Math.floor(i / width)
@@ -75,13 +75,14 @@ function init() {
   }
 
   function uncoverCell(selected){              //This function change the class of the clicked cell from covered to uncovered
+    if (cellsStatusInfo[selected].haveFlag === true){
+      return
+    }
     cellsStatusInfo[selected].isCovered = false
     cellsStatusInfo[selected].cell.classList.remove('covered')
     cellsStatusInfo[selected].cell.innerHTML = cellsStatusInfo[selected].nBombsClose
     if (firstClick === true){
-      console.log('im the first click')
       while (cellsStatusInfo[selected].haveBomb === true || cellsStatusInfo[selected].nBombsClose !== 0) {
-        console.log('i have a bomb')
         removeAllBombs()
         randomBombPosition()
       }
@@ -174,7 +175,7 @@ function init() {
     return closeToMe
   }
   
-  function addFlag(event){
+  function addFlag(event){            //this event add and remove flags
     event.preventDefault()
     const selected = event.target.dataset.id
     if (cellsStatusInfo[selected].isCovered === true) {
@@ -189,6 +190,8 @@ function init() {
       
     }
   }
+
+
   function game (event){
     const selected = event.target.dataset.id
     //TODO timer starts function

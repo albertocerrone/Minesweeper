@@ -78,7 +78,6 @@ function init() {
     cellsStatusInfo[selected].isCovered = false
     cellsStatusInfo[selected].cell.classList.remove('covered')
     cellsStatusInfo[selected].cell.innerHTML = cellsStatusInfo[selected].nBombsClose
-    console.log(cellsStatusInfo[selected].idCell)
     if (firstClick === true){
       console.log('im the first click')
       while (cellsStatusInfo[selected].haveBomb === true || cellsStatusInfo[selected].nBombsClose !== 0) {
@@ -175,8 +174,12 @@ function init() {
     return closeToMe
   }
   
-  function addFlag(){
-    
+  function addFlag(event){
+    const selected = event.target.dataset.id
+    if (cellsStatusInfo[selected].isCovered === true) {
+      cellsStatusInfo[selected].cell.classList.add('flagged')
+      cellsStatusInfo[selected].haveFlag = true
+    }
   }
   function game (event){
     const selected = event.target.dataset.id
@@ -197,5 +200,7 @@ function init() {
 
   cellsStatusInfo.forEach(cells => 
     cells.cell.addEventListener('click', game))
+  cellsStatusInfo.forEach(cells => 
+    cells.cell.addEventListener('contextmenu', addFlag))
 }
 window.addEventListener('DOMContentLoaded',init)

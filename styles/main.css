@@ -64,6 +64,7 @@ body {
 }
 
 .grid-wrapper > .grid > .covered {
+  background-image: url(../assets/img/blank.gif);
   background-color: black;
   background-repeat: no-repeat;
   background-size: contain;

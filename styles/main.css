@@ -82,5 +82,8 @@ body {
   cursor: pointer;
 }
 .bomb {
+  background-image: url("../assets/img/bombrevealed.gif");
+  background-repeat: no-repeat;
+  background-size: contain;
   background-color: red;
 }

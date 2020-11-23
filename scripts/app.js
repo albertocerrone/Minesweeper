@@ -75,7 +75,7 @@ function init() {
   }
 
   function uncoverCell(selected){              //This function change the class of the clicked cell from covered to uncovered
-    if (cellsStatusInfo[selected].haveFlag === true){
+    if (cellsStatusInfo[selected].haveFlag === false){
       return
     }
     cellsStatusInfo[selected].isCovered = false

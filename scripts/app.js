@@ -178,8 +178,15 @@ function init() {
     event.preventDefault()
     const selected = event.target.dataset.id
     if (cellsStatusInfo[selected].isCovered === true) {
-      cellsStatusInfo[selected].cell.classList.add('flagged')
-      cellsStatusInfo[selected].haveFlag = true
+      if (cellsStatusInfo[selected].haveFlag === false) {
+        cellsStatusInfo[selected].cell.classList.add('flagged')
+        cellsStatusInfo[selected].haveFlag = true
+
+      } else {
+        cellsStatusInfo[selected].cell.classList.remove('flagged')
+        cellsStatusInfo[selected].haveFlag = false
+      }
+      
     }
   }
   function game (event){

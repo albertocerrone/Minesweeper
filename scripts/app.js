@@ -190,7 +190,7 @@ function init() {
     }
   }
 
-  function numbersAndEmptySpaces(selected) {
+  function numbersAndEmptySpaces(selected) {      //this manage the design of the empty cells bombs and numbers 
     switch (cellsStatusInfo[selected].nBombsClose) {
       case 0:
         if (cellsStatusInfo[selected].haveBomb === true){

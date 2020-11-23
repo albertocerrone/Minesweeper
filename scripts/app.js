@@ -26,7 +26,7 @@ function init() {
   const cellCount = width * height
   const nBombs = 10
   const cellsStatusInfo = []
-  const firstClick = true //! this have to change after the first click
+  let firstClick = true //! this have to change after the first click
 
   //* Creating a Class to produce Object where I store info about the cell (if there is a bomb? or covered? etc)
 
@@ -80,12 +80,22 @@ function init() {
     cellsStatusInfo[selected].cell.classList.remove('covered')
     cellsStatusInfo[selected].cell.innerHTML = cellsStatusInfo[selected].nBombsClose
     console.log(cellsStatusInfo[selected].idCell)
+    if (firstClick === true){
+      console.log('im the first click')
+      while (cellsStatusInfo[selected].haveBomb === true || cellsStatusInfo[selected].nBombsClose !== 0) {
+        console.log('i have a bomb')
+        removeAllBombs()
+        randomBombPosition()
+      }
+      cellsStatusInfo[selected].cell.innerHTML = cellsStatusInfo[selected].nBombsClose
+      firstClick = false
+    }
     if (cellsStatusInfo[selected].nBombsClose === 0){
       revealCellsAround(selected)
     } 
   }
 
-  function removeAllBombs(){
+  function removeAllBombs(){            // This function removes all the bombs
     for (let i = 0; i < cellCount; i++){
       cellsStatusInfo[i].nBombsClose = 0
       if (cellsStatusInfo[i].haveBomb === true){
@@ -169,6 +179,8 @@ function init() {
 
   function game (event){
     const selected = event.target.dataset.id
+    //TODO timer starts function
+    
     uncoverCell(selected)
   }
 

@@ -3,7 +3,7 @@
 // TODO Function Reset (to use every time the game start and when user click on the button with the face)
 // // TODO Function to create random bombs position
 // // TODO Function to count how many bombs are around (this works just if firstClick = true and after bombs are place and before function to show the clicked cell and nearby)
-// TODO Function to show the clicked cell and nearby
+// // TODO Function to show the clicked cell and nearby
 // TODO Function game lost
 
 
@@ -41,7 +41,6 @@ function init() {
       this.haveFlag = haveFlag            //t||f
       this.nBombsClose = nBombsClose      //this will count the n of bombs around
       
-    
     }
     
     //? function for add bombs here?
@@ -176,7 +175,9 @@ function init() {
     return closeToMe
   }
   
-
+  function addFlag(){
+    
+  }
   function game (event){
     const selected = event.target.dataset.id
     //TODO timer starts function

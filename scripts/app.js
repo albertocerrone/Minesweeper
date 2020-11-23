@@ -63,36 +63,29 @@ function init() {
     }
   }
 
-  function uncoverCell(selected){              //This function change the class of the clicked cell from covered to uncovered
-    cellsStatusInfo[selected].isCovered = false
-    cellsStatusInfo[selected].cell.classList.remove('covered')
-    cellsStatusInfo[selected].cell.innerHTML = cellsStatusInfo[selected].nBombsClose
-    console.log(cellsStatusInfo[selected].idCell)
-    revealCellsAround(selected)
-
-    // console.log(cellsStatusInfo)
-  }
-
-  function revealCellsAround (index){
-    for (let c = cellsStatusInfo[index].column - 1; c <= cellsStatusInfo[index].column + 1; c++ ){
-      if (c >= 0 && c < width){
-        for (let r = cellsStatusInfo[index].row - 1; r <= cellsStatusInfo[index].row + 1; r++ ){
-          if (r >= 0 && r < height) {
-            console.log(cellsStatusInfo[index - width - 1])
-            // if (cellsStatusInfo[nextIndex].nBombsClose === 0){
-            //   revealCellsAround(nextIndex)
-            // }
-            //uncoverCell(nextIndex)
-            
-          }
-          
-        }
+  function revealCellsAround (index){ 
+    const cellsAround = whoIsCloseToMe(parseInt(index))
+    console.log(cellsAround)
+    for (let i = 0; i < cellsAround.length; i++){
+      if (cellsStatusInfo[cellsAround[i]].isCovered === true){
+        console.log(cellsAround[i])
+        uncoverCell(cellsAround[i])
       }
       
     }
   }
 
+  function uncoverCell(selected){              //This function change the class of the clicked cell from covered to uncovered
+    cellsStatusInfo[selected].isCovered = false
+    cellsStatusInfo[selected].cell.classList.remove('covered')
+    cellsStatusInfo[selected].cell.innerHTML = cellsStatusInfo[selected].nBombsClose
+    console.log(cellsStatusInfo[selected].idCell)
+    if (cellsStatusInfo[selected].nBombsClose === 0){
+      revealCellsAround(selected)
+    } 
 
+    // console.log(cellsStatusInfo)
+  }
 
   function randomBombPosition(){      //This function allocate randomly the bombs in the field
     let bombsPlaced = 0
@@ -109,7 +102,6 @@ function init() {
   
 
   function bombsCloseToMe(indexOfTheBomb){ // this function find how many bombs are close to every cell
-
     const nearby = whoIsCloseToMe(indexOfTheBomb)
     for (let i = 0; i < nearby.length; i++){
       cellsStatusInfo[nearby[i]].nBombsClose++
@@ -179,7 +171,7 @@ function init() {
   //*Event listeners
   createGrid()
   randomBombPosition()
-  console.log(whoIsCloseToMe(15))
+  
 
   cellsStatusInfo.forEach(cells => 
     cells.cell.addEventListener('click', game))

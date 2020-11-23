@@ -63,7 +63,7 @@ body {
   visibility: hidden;
 }
 
-.grid > .covered {
+.grid-wrapper > .grid > .covered {
   background-image: url(../assets/img/blank.gif);
   background-color: black;
   background-repeat: no-repeat;
@@ -75,13 +75,13 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
 }
-.grid-wrapper > .grid > .flagged {
+body > .grid-wrapper > .grid > .flagged {
   background-image: url("../assets/img/bombflagged.gif");
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
 }
-.bomb {
+.grid > .bomb {
   background-image: url("../assets/img/bombrevealed.gif");
   background-repeat: no-repeat;
   background-size: contain;

@@ -192,6 +192,13 @@ function init() {
 
   function numbersAndEmptySpaces(selected) {
     switch (cellsStatusInfo[selected].nBombsClose) {
+      case 0:
+        if (cellsStatusInfo[selected].haveBomb === true){
+          cellsStatusInfo[selected].cell.classList.add('bomb')
+        } else {
+          cellsStatusInfo[selected].cell.classList.add('uncovered')
+        }
+        break
       case 1:
         cellsStatusInfo[selected].cell.classList.add('uncoveredOne')
         break
@@ -216,10 +223,9 @@ function init() {
       case 8:
         cellsStatusInfo[selected].cell.classList.add('uncoveredEight')
         break
-    
       default:
         cellsStatusInfo[selected].cell.classList.add('uncovered')
-        break;
+        break
     }
     
   }

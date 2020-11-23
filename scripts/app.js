@@ -175,6 +175,7 @@ function init() {
   }
   
   function addFlag(event){
+    event.preventDefault()
     const selected = event.target.dataset.id
     if (cellsStatusInfo[selected].isCovered === true) {
       cellsStatusInfo[selected].cell.classList.add('flagged')

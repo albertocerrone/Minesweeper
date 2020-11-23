@@ -64,10 +64,8 @@ function init() {
 
   function revealCellsAround (index){ 
     const cellsAround = whoIsCloseToMe(parseInt(index))
-    console.log(cellsAround)
     for (let i = 0; i < cellsAround.length; i++){
       if (cellsStatusInfo[cellsAround[i]].isCovered === true){
-        console.log(cellsAround[i])
         uncoverCell(cellsAround[i])
       }
       

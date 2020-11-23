@@ -90,7 +90,7 @@ function init() {
     if (cellsStatusInfo[selected].nBombsClose === 0){
       revealCellsAround(selected)
     } 
-    numbersAndEmptySpaces(selected)
+    //numbersAndEmptySpaces(selected)
   }
 
   function removeAllBombs(){            // This function removes all the bombs
@@ -190,51 +190,62 @@ function init() {
     }
   }
 
-  function numbersAndEmptySpaces(selected) {      //this manage the design of the empty cells bombs and numbers 
-    switch (cellsStatusInfo[selected].nBombsClose) {
-      case 0:
-        if (cellsStatusInfo[selected].haveBomb === true){
-          cellsStatusInfo[selected].cell.classList.add('bomb')
-        } else {
-          cellsStatusInfo[selected].cell.classList.add('uncovered')
-        }
-        break
-      case 1:
-        cellsStatusInfo[selected].cell.classList.add('uncoveredOne')
-        break
-      case 2:
-        cellsStatusInfo[selected].cell.classList.add('uncoveredTwo')
-        break
-      case 3:
-        cellsStatusInfo[selected].cell.classList.add('uncoveredThree')
-        break
-      case 4:
-        cellsStatusInfo[selected].cell.classList.add('uncoveredFour')
-        break
-      case 5:
-        cellsStatusInfo[selected].cell.classList.add('uncoveredFive')
-        break
-      case 6:
-        cellsStatusInfo[selected].cell.classList.add('uncoveredSix')
-        break
-      case 7:
-        cellsStatusInfo[selected].cell.classList.add('uncoveredSeven')
-        break
-      case 8:
-        cellsStatusInfo[selected].cell.classList.add('uncoveredEight')
-        break
-      default:
-        cellsStatusInfo[selected].cell.classList.add('uncovered')
-        break
+  function numbersAndEmptySpaces() {      //this manage the UI of the empty cells bombs and numbers 
+    for (let i = 0; i < cellCount; i++){
+      switch (cellsStatusInfo[i].nBombsClose) {
+        case 0:
+          if (cellsStatusInfo[i].haveBomb === true){
+            cellsStatusInfo[i].cell.classList.add('bomb')
+          } else {
+            cellsStatusInfo[i].cell.classList.add('uncovered')
+          }
+          break
+        case 1:
+          cellsStatusInfo[i].cell.classList.add('uncoveredOne')
+          break
+        case 2:
+          cellsStatusInfo[i].cell.classList.add('uncoveredTwo')
+          break
+        case 3:
+          cellsStatusInfo[i].cell.classList.add('uncoveredThree')
+          break
+        case 4:
+          cellsStatusInfo[i].cell.classList.add('uncoveredFour')
+          break
+        case 5:
+          cellsStatusInfo[i].cell.classList.add('uncoveredFive')
+          break
+        case 6:
+          cellsStatusInfo[i].cell.classList.add('uncoveredSix')
+          break
+        case 7:
+          cellsStatusInfo[i].cell.classList.add('uncoveredSeven')
+          break
+        case 8:
+          cellsStatusInfo[i].cell.classList.add('uncoveredEight')
+          break
+        default:
+          cellsStatusInfo[i].cell.classList.add('uncovered')
+          break
+      }
     }
     
+    
   }
+
+  function clickedOnBomb (selected) {
+    //set the selected cell's class with red bomb
+    //set all the cells with 
+    
+  }
+
 
   function game (event){
     const selected = event.target.dataset.id
     //TODO timer starts function
     
     uncoverCell(selected)
+    numbersAndEmptySpaces()
   }
 
 
@@ -243,10 +254,11 @@ function init() {
   
 
   //*Event listeners
+
   createGrid()
   randomBombPosition()
   
-
+  
   cellsStatusInfo.forEach(cells => 
     cells.cell.addEventListener('click', game))
   cellsStatusInfo.forEach(cells => 

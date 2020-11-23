@@ -71,7 +71,7 @@ body {
   cursor: pointer;
 }
 .uncovered {
-  background-color: lightgray;
+  background-image: url(../assets/img/numbers/open0.gif);
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -86,4 +86,44 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
   background-color: red;
+}
+.uncoveredOne {
+  background-image: url(../assets/img/numbers/open1.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.uncoveredTwo {
+  background-image: url(../assets/img/numbers/open2.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.uncoveredThree {
+  background-image: url(../assets/img/numbers/open3.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.uncoveredFour {
+  background-image: url(../assets/img/numbers/open4.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.uncoveredFive {
+  background-image: url(../assets/img/numbers/open5.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.uncoveredSix {
+  background-image: url(../assets/img/numbers/open6.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.uncovereSeven {
+  background-image: url(../assets/img/numbers/open7.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.uncoveredEight {
+  background-image: url(../assets/img/numbers/open8.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
 }

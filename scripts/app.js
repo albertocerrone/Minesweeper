@@ -78,18 +78,19 @@ function init() {
     }
     cellsStatusInfo[selected].isCovered = false
     cellsStatusInfo[selected].cell.classList.remove('covered')
-    cellsStatusInfo[selected].cell.innerHTML = cellsStatusInfo[selected].nBombsClose
+    //cellsStatusInfo[selected].cell.innerHTML = cellsStatusInfo[selected].nBombsClose
     if (firstClick === true){
       while (cellsStatusInfo[selected].haveBomb === true || cellsStatusInfo[selected].nBombsClose !== 0) {
         removeAllBombs()
         randomBombPosition()
       }
-      cellsStatusInfo[selected].cell.innerHTML = cellsStatusInfo[selected].nBombsClose
+      //cellsStatusInfo[selected].cell.innerHTML = cellsStatusInfo[selected].nBombsClose
       firstClick = false
     }
     if (cellsStatusInfo[selected].nBombsClose === 0){
       revealCellsAround(selected)
     } 
+    numbersAndEmptySpaces(selected)
   }
 
   function removeAllBombs(){            // This function removes all the bombs
@@ -189,6 +190,39 @@ function init() {
     }
   }
 
+  function numbersAndEmptySpaces(selected) {
+    switch (cellsStatusInfo[selected].nBombsClose) {
+      case 1:
+        cellsStatusInfo[selected].cell.classList.add('uncoveredOne')
+        break
+      case 2:
+        cellsStatusInfo[selected].cell.classList.add('uncoveredTwo')
+        break
+      case 3:
+        cellsStatusInfo[selected].cell.classList.add('uncoveredThree')
+        break
+      case 4:
+        cellsStatusInfo[selected].cell.classList.add('uncoveredFour')
+        break
+      case 5:
+        cellsStatusInfo[selected].cell.classList.add('uncoveredFive')
+        break
+      case 6:
+        cellsStatusInfo[selected].cell.classList.add('uncoveredSix')
+        break
+      case 7:
+        cellsStatusInfo[selected].cell.classList.add('uncoveredSeven')
+        break
+      case 8:
+        cellsStatusInfo[selected].cell.classList.add('uncoveredEight')
+        break
+    
+      default:
+        cellsStatusInfo[selected].cell.classList.add('uncovered')
+        break;
+    }
+    
+  }
 
   function game (event){
     const selected = event.target.dataset.id

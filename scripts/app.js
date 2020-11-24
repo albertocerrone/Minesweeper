@@ -88,9 +88,7 @@ function init() {
     if (cellsStatusInfo[selected].nBombsClose === 0){
       revealCellsAround(selected)
     } 
-    if (cellsStatusInfo[selected].haveBomb === true){
-      clickedOnBomb(selected)
-    }
+    
   }
 
   function removeAllBombs(){            // This function removes all the bombs
@@ -253,6 +251,9 @@ function init() {
     
     uncoverCell(selected)
     numbersAndEmptySpaces()
+    if (cellsStatusInfo[selected].haveBomb === true){
+      clickedOnBomb(selected)
+    }
   }
 
 

@@ -9,26 +9,42 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
-}
-
-.grid-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+}
+
+.outputs-wrapper {
+  background-color: rgb(184, 182, 182);
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px;
+}
+
+.game-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  height: 400px;
+  width: 302px;
+  background-color: rgb(167, 167, 167);
 }
 /* Setting a class for Beginner Level */
 /* todo To reduce size of H&W when ready */
 .grid {
-  align-items: center;
+  /* align-items: center; */
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
   display: grid;
   grid-template-columns: repeat(9, 1fr);
   grid-template-rows: repeat(9, 1fr);
-  height: 100%;
+  border: 1px solid gray;
   justify-content: center;
-  height: 400px;
-  width: 400px;
+  height: 300px;
+  width: 300px;
   /* Setting a class for Intermediate Level */
   /* todo To reduce size of H&W when ready */
   /* .grid .intermediate{
@@ -78,7 +94,7 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
 }
-body > .grid-wrapper > .grid > .flagged {
+.game-wrapper > .grid-wrapper > .grid > .flagged {
   background-image: url("../assets/img/bombflagged.gif");
   background-repeat: no-repeat;
   background-size: contain;

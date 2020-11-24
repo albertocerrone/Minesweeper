@@ -19,6 +19,7 @@
 function init() {
   //* Variables
   const grid = document.querySelector('.grid') //Selecting the div
+  const audio = document.querySelector('#audio')
 
   //*Testing with easy level
   const width = 9
@@ -26,7 +27,7 @@ function init() {
   const cellCount = width * height
   const nBombs = 10
   const cellsStatusInfo = []
-  let firstClick = true //! this have to change after the first click
+  let firstClick = true 
 
   //* Creating a Class to produce Object where I store info about the cell (if there is a bomb? or covered? etc)
 
@@ -240,6 +241,8 @@ function init() {
     console.log(cellsStatusInfo[selected])
     cellsStatusInfo[selected].cell.classList.remove('bomb')
     cellsStatusInfo[selected].cell.classList.add('death')
+    audio.src = '../assets/audio/Minesweeper_Game_Over.ogg'
+    audio.play()
     console.log(cellsStatusInfo[selected])
     for (let i = 0; i < cellCount; i++){
       if (cellsStatusInfo[i].haveBomb === false && cellsStatusInfo[i].haveFlag === true){
@@ -250,9 +253,7 @@ function init() {
         cellsStatusInfo[i].isCovered = false
         cellsStatusInfo[i].cell.classList.remove('covered')
       }
-      console.log(cellsStatusInfo)
     }
-    
     // stop the timer
     // change face
   }

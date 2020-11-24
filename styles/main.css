@@ -22,16 +22,27 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 9px;
+  box-shadow: 0px 2px 0px 0px inset rgba(250, 248, 248, 0.527),
+    0px 0px 0px 2px inset rgba(134, 134, 134, 0.527);
 }
 
 .timer-monitor,
 .flags-monitor {
   background-color: black;
+  padding: 3px;
+  color: red;
+  font-size: 30px;
   height: 35px;
   width: 50px;
 }
 
 .face-button {
+  background-image: url("../assets/img/faces/facesmile.gif");
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 35px;
+  width: 35px;
+  cursor: pointer;
 }
 
 /* GRID WRAPPER */

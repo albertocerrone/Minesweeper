@@ -13,7 +13,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-
+/* OUTPUT WRAPPER */
 .outputs-wrapper {
   background-color: rgb(184, 182, 182);
   height: 50px;
@@ -24,6 +24,17 @@ body {
   padding: 9px;
 }
 
+.timer-monitor,
+.flags-monitor {
+  background-color: black;
+  height: 35px;
+  width: 50px;
+}
+
+.face-button {
+}
+
+/* GRID WRAPPER */
 .game-wrapper {
   display: flex;
   flex-direction: column;
@@ -76,6 +87,7 @@ body {
   height: 100%;
   width: 100%;
   background-color: rgb(143, 142, 142);
+  border: 0.5px dotted rgba(56, 56, 56, 0.61);
 }
 
 .hidden {
@@ -84,13 +96,14 @@ body {
 
 .grid-wrapper > .grid > .covered {
   background-image: url(../assets/img/blank.gif);
+  border: none;
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
 }
 .uncovered {
-  background-image: url(../assets/img/numbers/open0.gif);
-  border: 1px ridge rgba(124, 123, 123, 0.61);
+  background-image: url(../assets/img/numbers/notchecked.gif);
+
   background-repeat: no-repeat;
   background-size: contain;
 }

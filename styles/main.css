@@ -117,13 +117,23 @@ body > .grid-wrapper > .grid > .flagged {
   background-repeat: no-repeat;
   background-size: contain;
 }
-.uncovereSeven {
+.uncoveredSeven {
   background-image: url(../assets/img/numbers/open7.gif);
   background-repeat: no-repeat;
   background-size: contain;
 }
 .uncoveredEight {
   background-image: url(../assets/img/numbers/open8.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.misflagged {
+  background-image: url(../assets/img/bombmisflagged.gif);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.death {
+  background-image: url(../assets/img/bombdeath.gif);
   background-repeat: no-repeat;
   background-size: contain;
 }

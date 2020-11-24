@@ -88,6 +88,9 @@ function init() {
     if (cellsStatusInfo[selected].nBombsClose === 0){
       revealCellsAround(selected)
     } 
+    if (cellsStatusInfo[selected].haveBomb === true){
+      clickedOnBomb(selected)
+    }
   }
 
   function removeAllBombs(){            // This function removes all the bombs
@@ -231,10 +234,16 @@ function init() {
   }
 
   function clickedOnBomb (selected) {
-    //set the selected cell's class with red bomb
-    //remove from all the cells the class covered
-    //to add if at the end of ƒ uncoverCell
-    
+    console.log(cellsStatusInfo[selected])
+    cellsStatusInfo[selected].cell.classList.remove('bomb')
+    cellsStatusInfo[selected].cell.classList.add('death')
+    console.log(cellsStatusInfo[selected])
+    // set the selected cell's class with .death
+    // remove from all the cells with class bomb the class covered
+    // if haveflag === true and havebomb === true change class to misflagged
+    // to add if at the end of ƒ uncoverCell
+    // stop the timer
+    // change face
   }
 
 

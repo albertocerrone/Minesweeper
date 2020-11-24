@@ -187,6 +187,7 @@ function init() {
       
     }
   }
+  function misflagged()
 
   function numbersAndEmptySpaces() {      //this manage the UI of the empty cells bombs and numbers 
     for (let i = 0; i < cellCount; i++){
@@ -236,9 +237,17 @@ function init() {
     cellsStatusInfo[selected].cell.classList.remove('bomb')
     cellsStatusInfo[selected].cell.classList.add('death')
     console.log(cellsStatusInfo[selected])
-    // set the selected cell's class with .death
+    for (let i = 0; i < cellCount; i++){
+      if (cellsStatusInfo[i].haveBomb === false && cellsStatusInfo[i].haveFlag === true){
+
+      }
+      if (cellsStatusInfo[i].haveBomb === true && cellsStatusInfo[i].isCovered === true){
+        uncoverCell(i)
+      }
+    }
+    
     // remove from all the cells with class bomb the class covered
-    // if haveflag === true and havebomb === true change class to misflagged
+    // if haveflag === true and havebomb === false change class to misflagged
     // to add if at the end of ƒ uncoverCell
     // stop the timer
     // change face

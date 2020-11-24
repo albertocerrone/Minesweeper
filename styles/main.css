@@ -7,15 +7,15 @@
 body {
   background-image: url(../assets/img/Windows95-RTM-Desktop.png);
   background-repeat: no-repeat;
-  max-height: 905px;
   background-size: cover;
+  height: 100vh;
 }
 
 .grid-wrapper {
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
 }
 /* Setting a class for Beginner Level */
 /* todo To reduce size of H&W when ready */
@@ -68,7 +68,6 @@ body {
 
 .grid-wrapper > .grid > .covered {
   background-image: url(../assets/img/blank.gif);
-  background-color: black;
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
@@ -89,7 +88,6 @@ body > .grid-wrapper > .grid > .flagged {
   background-image: url("../assets/img/bombrevealed.gif");
   background-repeat: no-repeat;
   background-size: contain;
-  background-color: red;
 }
 .uncoveredOne {
   background-image: url(../assets/img/numbers/open1.gif);

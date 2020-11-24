@@ -5,7 +5,10 @@
 }
 
 body {
-  height: 100vh;
+  background-image: url(../assets/img/Windows95-RTM-Desktop.png);
+  background-repeat: no-repeat;
+  max-height: 905px;
+  background-size: cover;
 }
 
 .grid-wrapper {
@@ -28,7 +31,7 @@ body {
   width: 400px;
   /* Setting a class for Intermediate Level */
   /* todo To reduce size of H&W when ready */
-  /* .grid {
+  /* .grid .intermediate{
   align-items: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
   display: grid;
@@ -41,7 +44,7 @@ body {
 } */
   /* Setting a class for Expert Level
 /* todo To reduce size of H&W when ready */
-  /* .grid {
+  /* .grid .expert{
   align-items: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
   display: grid;
@@ -54,9 +57,9 @@ body {
 }
 
 .grid div {
-  border: 1px solid lightgrey;
   height: 100%;
   width: 100%;
+  background-color: rgb(143, 142, 142);
 }
 
 .hidden {
@@ -72,6 +75,7 @@ body {
 }
 .uncovered {
   background-image: url(../assets/img/numbers/open0.gif);
+  border: 1px ridge rgba(124, 123, 123, 0.61);
   background-repeat: no-repeat;
   background-size: contain;
 }

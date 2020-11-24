@@ -187,7 +187,11 @@ function init() {
       
     }
   }
-  function misflagged()
+  function misflagged (selected) {      // set UI to misflagged
+    cellsStatusInfo[selected].cell.classList.remove('flagged')
+    cellsStatusInfo[selected].cell.classList.remove('covered')
+    cellsStatusInfo[selected].cell.classList.add('misflagged')
+  }
 
   function numbersAndEmptySpaces() {      //this manage the UI of the empty cells bombs and numbers 
     for (let i = 0; i < cellCount; i++){
@@ -232,23 +236,23 @@ function init() {
     
   }
 
-  function clickedOnBomb (selected) {
+  function clickedOnBomb (selected) {         //this manage when the user click on a bomb
     console.log(cellsStatusInfo[selected])
     cellsStatusInfo[selected].cell.classList.remove('bomb')
     cellsStatusInfo[selected].cell.classList.add('death')
     console.log(cellsStatusInfo[selected])
     for (let i = 0; i < cellCount; i++){
       if (cellsStatusInfo[i].haveBomb === false && cellsStatusInfo[i].haveFlag === true){
-
+        misflagged(i)
       }
       if (cellsStatusInfo[i].haveBomb === true && cellsStatusInfo[i].isCovered === true){
-        uncoverCell(i)
+        cellsStatusInfo[i].cell.classList.remove('flagged')
+        cellsStatusInfo[i].isCovered = false
+        cellsStatusInfo[i].cell.classList.remove('covered')
       }
+      console.log(cellsStatusInfo)
     }
     
-    // remove from all the cells with class bomb the class covered
-    // if haveflag === true and havebomb === false change class to misflagged
-    // to add if at the end of ƒ uncoverCell
     // stop the timer
     // change face
   }

@@ -307,7 +307,7 @@ function init() {
     resetBtn.classList.remove('face-button')
     resetBtn.classList.add('face-ooh')
   }
-  function oohFaceUp{
+  function oohFaceUp(){
     resetBtn.classList.remove('face-ooh')
     resetBtn.classList.add('face-button')
   }

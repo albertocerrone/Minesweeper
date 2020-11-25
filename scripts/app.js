@@ -19,7 +19,8 @@
 function init() {
   //* Variables
   const grid = document.querySelector('.grid') //Selecting the div
-  const audio = document.querySelector('#audio')
+  const audio = document.querySelector('#audio') //Selecting the audio
+  const resetBtn = document.querySelector('.face-button') //Selecting reset button
 
   //*Testing with easy level
   const width = 9
@@ -258,6 +259,9 @@ function init() {
     // change face
   }
 
+  function reset(){
+    alert('reset')
+  }
 
   function game (event){
     const selected = event.target.dataset.id
@@ -285,5 +289,6 @@ function init() {
     cells.cell.addEventListener('click', game))
   cellsStatusInfo.forEach(cells => 
     cells.cell.addEventListener('contextmenu', addFlag))
+  resetBtn.addEventListener('click', reset)
 }
 window.addEventListener('DOMContentLoaded',init)

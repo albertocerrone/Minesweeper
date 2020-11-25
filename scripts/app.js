@@ -1,10 +1,10 @@
 // TODO Functions to Do:
 // TODO F to handle 3 levels of gaming: -Beginner 9*9 10bombs  -Intermediate 16*16 40bombs -Expert 30*16 99bombs (use Object)
-// TODO Function Reset (to use every time the game start and when user click on the button with the face)
+// // TODO Function Reset (to use every time the game start and when user click on the button with the face)
 // // TODO Function to create random bombs position
 // // TODO Function to count how many bombs are around (this works just if firstClick = true and after bombs are place and before function to show the clicked cell and nearby)
 // // TODO Function to show the clicked cell and nearby
-// TODO Function game lost
+// // TODO Function game lost
 
 
 //* When game is starting, all the cells have one class of covered
@@ -30,9 +30,11 @@ function init() {
   const cellCount = width * height
   const nBombs = 10
   let nFlags = nBombs
+  flagsMonitor.innerHTML = nFlags
   const cellsStatusInfo = []
   let firstClick = true 
   let timerId = null
+  let cellsOpened = 0
 
   //* Creating a Class to produce Object where I store info about the cell (if there is a bomb? or covered? etc)
 
@@ -97,7 +99,7 @@ function init() {
     if (cellsStatusInfo[selected].nBombsClose === 0){
       revealCellsAround(selected)
     } 
-    
+    cellsOpened++
   }
 
   function removeAllBombs(){            // This function removes all the bombs
@@ -290,12 +292,15 @@ function init() {
 
   function game (event){
     const selected = event.target.dataset.id
-    //TODO timer starts function
-    
     uncoverCell(selected)
     numbersAndEmptySpaces()
     if (cellsStatusInfo[selected].haveBomb === true){
       clickedOnBomb(selected)
+    }
+    if (cellsOpened === cellCount - nBombs){
+      timerStop()
+      resetBtn.classList.remove('face-button')
+      resetBtn.classList.add('face-win')
     }
   }
 

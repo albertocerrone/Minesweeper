@@ -40,16 +40,24 @@ body {
   background-image: url("../assets/img/faces/facesmile.gif");
   background-repeat: no-repeat;
   background-size: contain;
-  height: 35px;
-  width: 35px;
+  height: 40px;
+  width: 40px;
   cursor: pointer;
 }
 .face-dead {
   background-image: url("../assets/img/faces/facedead.gif");
   background-repeat: no-repeat;
   background-size: contain;
-  height: 35px;
-  width: 35px;
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+}
+.face-win {
+  background-image: url("../assets/img/faces/facewin.gif");
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 40px;
+  width: 40px;
   cursor: pointer;
 }
 

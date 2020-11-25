@@ -21,6 +21,7 @@ function init() {
   const grid = document.querySelector('.grid') //Selecting the div
   const audio = document.querySelector('#audio') //Selecting the audio
   const resetBtn = document.querySelector('.face-button') //Selecting reset button
+  const flagsMonitor = document.querySelector('#flags-monitor')
 
   //*Testing with easy level
   const width = 9
@@ -188,7 +189,7 @@ function init() {
         cellsStatusInfo[selected].haveFlag = false
         nFlags++
       }
-      //to connect to the flag-display
+      flagsMonitor.innerHTML = nFlags //to connect to the flag-display
     }
   }
   function misflagged (selected) {      // set UI to misflagged

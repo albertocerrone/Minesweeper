@@ -26,8 +26,8 @@ body {
     0px 0px 0px 2px inset rgba(134, 134, 134, 0.527);
 }
 
-.timer-monitor,
-.flags-monitor {
+#timer-monitor,
+#flags-monitor {
   background-color: black;
   padding: 3px;
   color: red;

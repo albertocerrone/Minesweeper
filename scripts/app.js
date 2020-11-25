@@ -27,6 +27,7 @@ function init() {
   const height = 9
   const cellCount = width * height
   const nBombs = 10
+  const nFlags = nBombs
   const cellsStatusInfo = []
   let firstClick = true 
 

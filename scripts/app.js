@@ -303,7 +303,14 @@ function init() {
       resetBtn.classList.add('face-win')
     }
   }
-
+  function oohFaceDown(){
+    resetBtn.classList.remove('face-button')
+    resetBtn.classList.add('face-ooh')
+  }
+  function oohFaceUp{
+    resetBtn.classList.remove('face-ooh')
+    resetBtn.classList.add('face-button')
+  }
 
   //! Tests...To remove at the end
   console.log(cellsStatusInfo)
@@ -317,6 +324,10 @@ function init() {
   
   cellsStatusInfo.forEach(cells => 
     cells.cell.addEventListener('click', game))
+  cellsStatusInfo.forEach(cells =>  
+    cells.cell.addEventListener('mousedown',oohFaceDown))
+  cellsStatusInfo.forEach(cells =>  
+    cells.cell.addEventListener('mouseup',oohFaceUp))
   cellsStatusInfo.forEach(cells => 
     cells.cell.addEventListener('contextmenu', addFlag))
   resetBtn.addEventListener('click', reset)

@@ -27,7 +27,7 @@ function init() {
   const height = 9
   const cellCount = width * height
   const nBombs = 10
-  const nFlags = nBombs
+  let nFlags = nBombs
   const cellsStatusInfo = []
   let firstClick = true 
 
@@ -181,12 +181,14 @@ function init() {
       if (cellsStatusInfo[selected].haveFlag === false) {
         cellsStatusInfo[selected].cell.classList.add('flagged')
         cellsStatusInfo[selected].haveFlag = true
+        nFlags--
 
       } else {
         cellsStatusInfo[selected].cell.classList.remove('flagged')
         cellsStatusInfo[selected].haveFlag = false
+        nFlags++
       }
-      
+      //to connect to the flag-display
     }
   }
   function misflagged (selected) {      // set UI to misflagged
@@ -257,6 +259,9 @@ function init() {
     }
     // stop the timer
     // change face
+    resetBtn.classList.remove('face-button')
+    resetBtn.classList.add('face-dead')
+
   }
 
   function reset(){ 

@@ -21,7 +21,8 @@ function init() {
   const grid = document.querySelector('.grid') //Selecting the div
   const audio = document.querySelector('#audio') //Selecting the audio
   const resetBtn = document.querySelector('.face-button') //Selecting reset button
-  const flagsMonitor = document.querySelector('#flags-monitor')
+  const flagsMonitor = document.querySelector('#flags-monitor') //Selecting flag monitor
+  const timerMonitor = document.querySelector('#timer-monitor')// Selecting timer monitor
 
   //*Testing with easy level
   const width = 9
@@ -31,6 +32,7 @@ function init() {
   let nFlags = nBombs
   const cellsStatusInfo = []
   let firstClick = true 
+  let timerId = null
 
   //* Creating a Class to produce Object where I store info about the cell (if there is a bomb? or covered? etc)
 
@@ -82,11 +84,15 @@ function init() {
     cellsStatusInfo[selected].isCovered = false
     cellsStatusInfo[selected].cell.classList.remove('covered')
     if (firstClick === true){
+      
+      timerStart()
+      firstClick = false
       while (cellsStatusInfo[selected].haveBomb === true || cellsStatusInfo[selected].nBombsClose !== 0) {
         removeAllBombs()
         randomBombPosition()
       }
-      firstClick = false
+      
+      
     }
     if (cellsStatusInfo[selected].nBombsClose === 0){
       revealCellsAround(selected)
@@ -189,7 +195,7 @@ function init() {
         cellsStatusInfo[selected].haveFlag = false
         nFlags++
       }
-      flagsMonitor.innerHTML = nFlags //to connect to the flag-display
+      flagsMonitor.innerHTML = nFlags 
     }
   }
   function misflagged (selected) {      // set UI to misflagged
@@ -262,12 +268,20 @@ function init() {
       
     }
     // stop the timer
-    
+    timerStop()
     // change face
     resetBtn.classList.remove('face-button')
     resetBtn.classList.add('face-dead')
-    
+  }
 
+  function timerStart (){
+    timerId = setInterval(() => {
+      timerMonitor.innerHTML++
+    }, 1000)
+  }
+  function timerStop (){
+    clearInterval(timerId)
+    timerId = null
   }
 
   function reset(){ 

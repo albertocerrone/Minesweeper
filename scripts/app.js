@@ -60,11 +60,10 @@ function init() {
       const column = i % width
       const row = Math.floor(i / width)
       cellsStatusInfo.push(new CellInfo(i, cell, column, row, true, false, false, 0))
-      //cell.innerHTML = cellsStatusInfo[i].nBombsClose  //! to remove  
     }
   }
 
-  function revealCellsAround (index){ 
+  function revealCellsAround (index){         //To open the cells that are around one
     const cellsAround = whoIsCloseToMe(parseInt(index))
     for (let i = 0; i < cellsAround.length; i++){
       if (cellsStatusInfo[cellsAround[i]].isCovered === true){
@@ -260,7 +259,7 @@ function init() {
   }
 
   function reset(){
-    alert('reset')
+    
   }
 
   function game (event){

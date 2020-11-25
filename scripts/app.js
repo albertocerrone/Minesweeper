@@ -268,7 +268,7 @@ function init() {
       
     }
     // stop the timer
-    timerStop()
+    timerStop(
     // change face
     resetBtn.classList.remove('face-button')
     resetBtn.classList.add('face-dead')

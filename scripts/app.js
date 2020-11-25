@@ -258,8 +258,8 @@ function init() {
     // change face
   }
 
-  function reset(){
-    
+  function reset(){ 
+    location.reload()
   }
 
   function game (event){

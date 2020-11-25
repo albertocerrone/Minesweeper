@@ -54,6 +54,7 @@ body {
 }
 
 /* GRID WRAPPER */
+
 .game-wrapper {
   display: flex;
   flex-direction: column;
@@ -111,6 +112,9 @@ body {
 
 .hidden {
   visibility: hidden;
+}
+.disabled {
+  pointer-events: none;
 }
 
 .grid-wrapper > .grid > .covered {

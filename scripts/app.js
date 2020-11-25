@@ -256,11 +256,15 @@ function init() {
         cellsStatusInfo[i].isCovered = false
         cellsStatusInfo[i].cell.classList.remove('covered')
       }
+      //all the cells became not clickable
+      cellsStatusInfo[i].cell.classList.add('disabled')
+      
     }
     // stop the timer
     // change face
     resetBtn.classList.remove('face-button')
     resetBtn.classList.add('face-dead')
+    
 
   }
 

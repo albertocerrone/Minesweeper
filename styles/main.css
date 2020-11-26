@@ -78,7 +78,10 @@ body {
 
 .dropdown-content > div {
   font-size: 14px;
+  margin: 8px;
+  padding: 3px 0;
 }
+
 /* OUTPUT WRAPPER */
 .outputs-wrapper {
   background-color: rgb(189, 189, 189);

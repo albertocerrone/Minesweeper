@@ -150,7 +150,7 @@ body {
   background-color: rgb(167, 167, 167);
 }
 /* Setting a class for Beginner Level */
-/* todo To reduce size of H&W when ready */
+
 .grid {
   /* align-items: center; */
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
@@ -161,31 +161,6 @@ body {
   justify-content: center;
   height: 300px;
   width: 300px;
-  /* Setting a class for Intermediate Level */
-  /* todo To reduce size of H&W when ready */
-  /* .grid .intermediate{
-  align-items: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
-  display: grid;
-  grid-template-columns: repeat(16, 1fr);
-  grid-template-rows: repeat(16, 1fr);
-  height: 100%;
-  justify-content: center;
-  height: 500px;
-  width: 500px;
-} */
-  /* Setting a class for Expert Level
-/* todo To reduce size of H&W when ready */
-  /* .grid .expert{
-  align-items: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
-  display: grid;
-  grid-template-columns: repeat(30, 1fr);
-  grid-template-rows: repeat(16, 1fr);
-  height: 100%;
-  justify-content: center;
-  height: 400px;
-  width: 800px; */
 }
 
 .grid div {
@@ -195,9 +170,6 @@ body {
   border: 0.5px dotted rgba(56, 56, 56, 0.61);
 }
 
-.hidden {
-  visibility: hidden;
-}
 .disabled {
   pointer-events: none;
 }

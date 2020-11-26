@@ -32,7 +32,7 @@ function init() {
   const nBombs = 10
   let nFlags = nBombs
   flagsMonitor.innerHTML = nFlags
-  const cellsStatusInfo = []
+  let cellsStatusInfo = []
   let firstClick = true 
   let timerId = null
   let cellsOpened = 0
@@ -286,9 +286,44 @@ function init() {
     clearInterval(timerId)
     timerId = null
   }
-
+  function timerReset (){
+    timerStop()
+    timerMonitor.innerHTML = 0
+  }
   function reset(){ 
-    location.reload()
+    timerReset()
+    nFlags = nBombs
+    flagsMonitor.innerHTML = nFlags
+    cellsStatusInfo = []
+    firstClick = true 
+    timerId = null
+    cellsOpened = 0
+    console.log(resetBtn.classList)
+    if (resetBtn.classList.value === 'face-win'){
+      resetBtn.classList.remove('face-win')
+      resetBtn.classList.add('face-button')
+    }
+    if (resetBtn.classList.value === 'face-dead'){
+      resetBtn.classList.remove('face-dead')
+      resetBtn.classList.add('face-button')
+    }
+
+    while (grid.firstChild){
+      grid.removeChild(grid.lastChild)
+    }
+    createGrid()
+    randomBombPosition()
+    cellsStatusInfo.forEach(cells => 
+      cells.cell.addEventListener('click', game))
+    cellsStatusInfo.forEach(cells =>  
+      cells.cell.addEventListener('mousedown',oohFaceDown))
+    cellsStatusInfo.forEach(cells =>  
+      cells.cell.addEventListener('mouseup',oohFaceUp))
+    cellsStatusInfo.forEach(cells => 
+      cells.cell.addEventListener('contextmenu', addFlag))
+    resetBtn.addEventListener('click', reset)
+    newGame.addEventListener('click', reset) 
+
   }
 
   function game (event){

@@ -24,6 +24,7 @@ function init() {
   const flagsMonitor = document.querySelector('#flags-monitor') //Selecting flag monitor
   const timerMonitor = document.querySelector('#timer-monitor')// Selecting timer monitor
   const newGame = document.querySelector('.new-game')
+  const levels = document.querySelectorAll('.content')
 
   //*Testing with easy level
   const width = 9
@@ -51,9 +52,6 @@ function init() {
       this.nBombsClose = nBombsClose      //this will count the n of bombs around
       
     }
-    
-    //? function for add bombs here?
-    //? function for count the bombs around here?
   }
   
   //* Functions
@@ -339,6 +337,7 @@ function init() {
       resetBtn.classList.add('face-win')
     }
   }
+  //! to implement better UI with shadows in the box
   function oohFaceDown(){
     resetBtn.classList.remove('face-button')
     resetBtn.classList.add('face-ooh')
@@ -348,10 +347,9 @@ function init() {
     resetBtn.classList.add('face-button')
   }
 
-  //! Tests...To remove at the end
-  console.log(cellsStatusInfo)
-  
 
+
+ 
   //*Event listeners
 
   createGrid()
@@ -368,6 +366,9 @@ function init() {
     cells.cell.addEventListener('contextmenu', addFlag))
   resetBtn.addEventListener('click', reset)
   newGame.addEventListener('click', reset) 
+  levels.forEach(level => 
+    level.addEventListener('click', changeLevel))
+
 }
   
 window.addEventListener('DOMContentLoaded',init)

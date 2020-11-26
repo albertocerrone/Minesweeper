@@ -17,13 +17,14 @@ body {
 
 /* STATUS BAR */
 .status-bar {
-  height: 27px;
+  height: 26px;
   width: 99%;
-  background-color: blue;
+  background-image: linear-gradient(to right, blue, rgb(153, 191, 204));
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin: 0 6px 4px 6px;
+  margin: 0 6px 3px 6px;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.164), -1px -1px rgba(245, 245, 245, 0.281);
 }
 .status-bar > img {
   margin-left: 3px;

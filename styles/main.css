@@ -12,6 +12,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: sans-serif;
 }
 /* FUNCTION BAR */
 .function-bar {
@@ -25,8 +26,20 @@ body {
   box-shadow: 2px 0px 0px 0px inset rgba(0, 0, 0, 0.2),
     -2px 0px 0px 0px inset rgba(0, 0, 0, 0.2);
 }
-
+.function-bar > a {
+  font-size: 14px;
+  margin-left: 5px;
+  text-decoration: none;
+  color: black;
+}
 /* DROPDOWN */
+.dropBtn {
+  color: black;
+
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
 .dropdown-content {
   display: none;
   position: absolute;
@@ -34,9 +47,13 @@ body {
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  cursor: pointer;
 }
 .dropdown:hover .dropdown-content {
   display: block;
+}
+.dropdown-content > div {
+  font-size: 14px;
 }
 /* OUTPUT WRAPPER */
 .outputs-wrapper {

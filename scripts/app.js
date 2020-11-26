@@ -25,12 +25,13 @@ function init() {
   const timerMonitor = document.querySelector('#timer-monitor')// Selecting timer monitor
   const newGame = document.querySelector('.new-game')
   const levels = document.querySelectorAll('.content')
+  const gameWrapper = document.querySelector('.game-wrapper')
 
   //*Testing with easy level
-  const width = 9
-  const height = 9
-  const cellCount = width * height
-  const nBombs = 10
+  let width = 9
+  let height = 9
+  let cellCount = width * height
+  let nBombs = 10
   let nFlags = nBombs
   flagsMonitor.innerHTML = nFlags
   let cellsStatusInfo = []
@@ -56,7 +57,54 @@ function init() {
   
   //* Functions
 
+  function changeLevel(event){
+    if (event === null){
+      return
+    }
+    else if(event.target.innerHTML === 'Intermediate'){
+      width = 16
+      height = 16
+      cellCount = width * height
+      nBombs = 40
+      nFlags = nBombs
+      flagsMonitor.innerHTML = nFlags
+      grid.style.gridTemplateColumns = 'repeat(16, 1fr)'
+      grid.style.gridTemplateRows = 'repeat(16, 1fr)'
+      grid.style.width = '300px'
+      gameWrapper.style.width = '300px'
+      reset()
+    }
+    else if(event.target.innerHTML === 'Expert'){
+      width = 30
+      height = 16
+      cellCount = width * height
+      nBombs = 99
+      nFlags = nBombs
+      flagsMonitor.innerHTML = nFlags
+      grid.style.gridTemplateColumns = 'repeat(30, 1fr)'
+      grid.style.gridTemplateRows = 'repeat(16, 1fr)'
+      grid.style.width = '600px'
+      gameWrapper.style.width = '600px'
+      reset()
+    }
+     else {
+      width = 9
+      height = 9
+      cellCount = width * height
+      nBombs = 10
+      nFlags = nBombs
+      flagsMonitor.innerHTML = nFlags
+      grid.style.gridTemplateColumns = 'repeat(9, 1fr)'
+      grid.style.gridTemplateRows = 'repeat(9, 1fr)'
+      grid.style.width = '300px'
+      gameWrapper.style.width = '300px'
+      reset()
+     }
+
+  }
+
   function createGrid() {                   //This function create the cells in the grid with status of covered
+    changeLevel(null)
     for (let i = 0; i < cellCount; i++) {
       const cell = document.createElement('div')
       cell.dataset.id = i 
@@ -296,7 +344,6 @@ function init() {
     firstClick = true 
     timerId = null
     cellsOpened = 0
-    console.log(resetBtn.classList)
     if (resetBtn.classList.value === 'face-win'){
       resetBtn.classList.remove('face-win')
       resetBtn.classList.add('face-button')
@@ -349,7 +396,6 @@ function init() {
 
 
 
- 
   //*Event listeners
 
   createGrid()
@@ -365,7 +411,9 @@ function init() {
   cellsStatusInfo.forEach(cells => 
     cells.cell.addEventListener('contextmenu', addFlag))
   resetBtn.addEventListener('click', reset)
-  newGame.addEventListener('click', reset) 
+  newGame.addEventListener('click', ()=>(
+    location.reload()
+  )) 
   levels.forEach(level => 
     level.addEventListener('click', changeLevel))
 

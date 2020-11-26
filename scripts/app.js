@@ -60,8 +60,7 @@ function init() {
   function changeLevel(event){
     if (event === null){
       return
-    }
-    else if(event.target.innerHTML === 'Intermediate'){
+    } else if (event.target.innerHTML === 'Intermediate'){
       width = 16
       height = 16
       cellCount = width * height
@@ -73,8 +72,7 @@ function init() {
       grid.style.width = '300px'
       gameWrapper.style.width = '300px'
       reset()
-    }
-    else if(event.target.innerHTML === 'Expert'){
+    } else if (event.target.innerHTML === 'Expert'){
       width = 30
       height = 16
       cellCount = width * height
@@ -86,8 +84,7 @@ function init() {
       grid.style.width = '600px'
       gameWrapper.style.width = '600px'
       reset()
-    }
-     else {
+    } else {
       width = 9
       height = 9
       cellCount = width * height
@@ -99,7 +96,7 @@ function init() {
       grid.style.width = '300px'
       gameWrapper.style.width = '300px'
       reset()
-     }
+    }
 
   }
 

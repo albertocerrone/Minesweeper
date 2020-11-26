@@ -23,6 +23,7 @@ function init() {
   const resetBtn = document.querySelector('.face-button') //Selecting reset button
   const flagsMonitor = document.querySelector('#flags-monitor') //Selecting flag monitor
   const timerMonitor = document.querySelector('#timer-monitor')// Selecting timer monitor
+  const newGame = document.querySelector('.new-game')
 
   //*Testing with easy level
   const width = 9
@@ -331,5 +332,7 @@ function init() {
   cellsStatusInfo.forEach(cells => 
     cells.cell.addEventListener('contextmenu', addFlag))
   resetBtn.addEventListener('click', reset)
+  newGame.addEventListener('click', reset) 
 }
+  
 window.addEventListener('DOMContentLoaded',init)

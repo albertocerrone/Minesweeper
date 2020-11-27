@@ -186,6 +186,13 @@ body {
   background-size: contain;
   cursor: pointer;
 }
+.grid-wrapper > .grid > .clicked {
+  background-image: url(../assets/img/numbers/open0.gif);
+  border: 0.5px solid rgba(0, 0, 0, 0.438);
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
 .uncovered {
   background-image: url(../assets/img/numbers/notchecked.gif);
 

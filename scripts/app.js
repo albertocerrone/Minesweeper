@@ -57,7 +57,7 @@ function init() {
   
   //* Functions
 
-  function changeLevel(event){
+  function changeLevel(event){        //this function change the UI and the logic of the game for every level
     if (event === null){
       return
     } else if (event.target.innerHTML === 'Intermediate'){
@@ -105,7 +105,8 @@ function init() {
     for (let i = 0; i < cellCount; i++) {
       const cell = document.createElement('div')
       cell.dataset.id = i 
-      cell.classList.add('covered') 
+      cell.classList.add('covered')
+      cell.setAttribute('draggable',false) 
       grid.appendChild(cell)
       const column = i % width
       const row = Math.floor(i / width)
@@ -382,14 +383,20 @@ function init() {
     }
   }
   //! to implement better UI with shadows in the box
-  function oohFaceDown(){
+  function oohFaceDown(event){
+    event.preventDefault()
     resetBtn.classList.remove('face-button')
     resetBtn.classList.add('face-ooh')
-    
+    event.target.classList.remove('covered')
+    event.target.classList.add('clicked')
+
   }
-  function oohFaceUp(){
+  function oohFaceUp(event){
     resetBtn.classList.remove('face-ooh')
     resetBtn.classList.add('face-button')
+    event.target.classList.remove('clicked')
+    event.target.classList.add('covered')
+    
   }
 
 

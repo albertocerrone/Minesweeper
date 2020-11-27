@@ -77,7 +77,6 @@ body {
 
 .dropdown:hover .dropdown-content {
   display: block;
-  transition: 2s;
 }
 
 .dropdown-content > div {
@@ -86,8 +85,12 @@ body {
   padding: 3px 0;
 }
 
-.dropdown-content > :first-child {
-  unde: 0 0 0 -2px inset solid rgb(17, 4, 4);
+#line {
+  margin-left: 6px;
+  padding: 0;
+  width: 130px;
+  height: 1px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.233);
 }
 
 /* OUTPUT WRAPPER */

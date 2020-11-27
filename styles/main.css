@@ -5,9 +5,10 @@
 }
 
 body {
-  background-image: url(../assets/img/Windows95-RTM-Desktop.png);
+  background-image: url(../assets/img/Windows95-RTM-Desktop\ copy.png);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: bottom;
   height: 100vh;
   display: flex;
   justify-content: center;

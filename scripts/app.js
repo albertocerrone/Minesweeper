@@ -320,20 +320,20 @@ function init() {
     resetBtn.classList.add('face-dead')
   }
 
-  function timerStart (){
+  function timerStart (){     //handle the timer when start
     timerId = setInterval(() => {
       timerMonitor.innerHTML++
     }, 1000)
   }
-  function timerStop (){
+  function timerStop (){  //handle the timer when stop
     clearInterval(timerId)
     timerId = null
   }
-  function timerReset (){
+  function timerReset (){    //to reset the timer
     timerStop()
     timerMonitor.innerHTML = 0
   }
-  function reset(){ 
+  function reset(){         //to reset the game (only the grid)
     timerReset()
     nFlags = nBombs
     flagsMonitor.innerHTML = nFlags
@@ -368,7 +368,7 @@ function init() {
 
   }
 
-  function game (event){
+  function game (event){            //this handle each click of the game
     const selected = event.target.dataset.id
     uncoverCell(selected)
     numbersAndEmptySpaces()
@@ -385,6 +385,7 @@ function init() {
   function oohFaceDown(){
     resetBtn.classList.remove('face-button')
     resetBtn.classList.add('face-ooh')
+    
   }
   function oohFaceUp(){
     resetBtn.classList.remove('face-ooh')

@@ -1,5 +1,5 @@
 // TODO Functions to Do:
-// TODO F to handle 3 levels of gaming: -Beginner 9*9 10bombs  -Intermediate 16*16 40bombs -Expert 30*16 99bombs (use Object)
+// // TODO F to handle 3 levels of gaming: -Beginner 9*9 10bombs  -Intermediate 16*16 40bombs -Expert 30*16 99bombs (use Object)
 // // TODO Function Reset (to use every time the game start and when user click on the button with the face)
 // // TODO Function to create random bombs position
 // // TODO Function to count how many bombs are around (this works just if firstClick = true and after bombs are place and before function to show the clicked cell and nearby)
@@ -416,9 +416,7 @@ function init() {
   cellsStatusInfo.forEach(cells => 
     cells.cell.addEventListener('contextmenu', addFlag))
   resetBtn.addEventListener('click', reset)
-  newGame.addEventListener('click', ()=>(
-    location.reload()
-  )) 
+  newGame.addEventListener('click', reset) 
   levels.forEach(level => 
     level.addEventListener('click', changeLevel))
 

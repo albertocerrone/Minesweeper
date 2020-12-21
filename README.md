@@ -52,9 +52,7 @@ From the menu Game, you can decide between 3 levels of difficulty:<br>
 If you desire to reset the game, you can click on the smiley face.
 
 You can understand better the games rules from this Youtube's video:
-https://www.youtube.com/watch?v=7B85WbEiYf4
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/7B85WbEiYf4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[<i>How to play Minesweeper by Eric Buffington</i>](https://www.youtube.com/watch?v=7B85WbEiYf4)
 
 ---
 

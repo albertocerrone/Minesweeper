@@ -35,14 +35,14 @@ function init() {
   let nFlags = nBombs
   flagsMonitor.innerHTML = nFlags
   let cellsStatusInfo = []
-  let firstClick = true 
+  let firstClick = true
   let timerId = null
   let cellsOpened = 0
 
   //* Creating a Class to produce Object where I store info about the cell (if there is a bomb? or covered? etc)
 
-  class CellInfo{
-    constructor (idCell, cell, column, row, isCovered, haveBomb, haveFlag, nBombsClose){
+  class CellInfo {
+    constructor(idCell, cell, column, row, isCovered, haveBomb, haveFlag, nBombsClose) {
       this.idCell = idCell           //same as i in createGrid
       this.cell = cell                //this store the div in the system
       this.column = column            //this track the column
@@ -51,16 +51,16 @@ function init() {
       this.haveBomb = haveBomb             //t||f
       this.haveFlag = haveFlag            //t||f
       this.nBombsClose = nBombsClose      //this will count the n of bombs around
-      
+
     }
   }
-  
+
   //* Functions
 
-  function changeLevel(event){        //this function change the UI and the logic of the game for every level
-    if (event === null){
+  function changeLevel(event) {        //this function change the UI and the logic of the game for every level
+    if (event === null) {
       return
-    } else if (event.target.innerHTML === 'Intermediate'){
+    } else if (event.target.innerHTML === 'Intermediate') {
       width = 16
       height = 16
       cellCount = width * height
@@ -72,7 +72,7 @@ function init() {
       grid.style.width = '300px'
       gameWrapper.style.width = '300px'
       reset()
-    } else if (event.target.innerHTML === 'Expert'){
+    } else if (event.target.innerHTML === 'Expert') {
       width = 30
       height = 16
       cellCount = width * height
@@ -104,9 +104,9 @@ function init() {
     changeLevel(null)
     for (let i = 0; i < cellCount; i++) {
       const cell = document.createElement('div')
-      cell.dataset.id = i 
+      cell.dataset.id = i
       cell.classList.add('covered')
-      cell.setAttribute('draggable',false) 
+      cell.setAttribute('draggable', false)
       grid.appendChild(cell)
       const column = i % width
       const row = Math.floor(i / width)
@@ -114,55 +114,55 @@ function init() {
     }
   }
 
-  function revealCellsAround (index){         //To open the cells that are around one
+  function revealCellsAround(index) {         //To open the cells that are around one
     const cellsAround = whoIsCloseToMe(parseInt(index))
-    for (let i = 0; i < cellsAround.length; i++){
-      if (cellsStatusInfo[cellsAround[i]].isCovered === true){
+    for (let i = 0; i < cellsAround.length; i++) {
+      if (cellsStatusInfo[cellsAround[i]].isCovered === true) {
         uncoverCell(cellsAround[i])
       }
-      
+
     }
   }
 
-  function uncoverCell(selected){              //This function change the class of the clicked cell from covered to uncovered
-    if (cellsStatusInfo[selected].haveFlag === true){
+  function uncoverCell(selected) {              //This function change the class of the clicked cell from covered to uncovered
+    if (cellsStatusInfo[selected].haveFlag === true) {
       return
     }
     cellsStatusInfo[selected].isCovered = false
     cellsStatusInfo[selected].cell.classList.remove('covered')
-    if (firstClick === true){
-      
+    if (firstClick === true) {
+
       timerStart()
       firstClick = false
       while (cellsStatusInfo[selected].haveBomb === true || cellsStatusInfo[selected].nBombsClose !== 0) {
         removeAllBombs()
         randomBombPosition()
       }
-      
-      
+
+
     }
-    if (cellsStatusInfo[selected].nBombsClose === 0){
+    if (cellsStatusInfo[selected].nBombsClose === 0) {
       revealCellsAround(selected)
-    } 
+    }
     cellsOpened++
   }
 
-  function removeAllBombs(){            // This function removes all the bombs
-    for (let i = 0; i < cellCount; i++){
+  function removeAllBombs() {            // This function removes all the bombs
+    for (let i = 0; i < cellCount; i++) {
       cellsStatusInfo[i].nBombsClose = 0
-      if (cellsStatusInfo[i].haveBomb === true){
+      if (cellsStatusInfo[i].haveBomb === true) {
         cellsStatusInfo[i].haveBomb = false
-        cellsStatusInfo[i].cell.classList.remove('bomb')       
+        cellsStatusInfo[i].cell.classList.remove('bomb')
       }
     }
-    
+
   }
 
-  function randomBombPosition(){      //This function allocate randomly the bombs in the field
+  function randomBombPosition() {      //This function allocate randomly the bombs in the field
     let bombsPlaced = 0
     while (bombsPlaced < nBombs) {
       const randomIndex = Math.floor(Math.random() * cellCount)
-      if (cellsStatusInfo[randomIndex].haveBomb === false){
+      if (cellsStatusInfo[randomIndex].haveBomb === false) {
         cellsStatusInfo[randomIndex].haveBomb = true
         cellsStatusInfo[randomIndex].cell.classList.add('bomb')
         bombsCloseToMe(randomIndex)
@@ -170,18 +170,18 @@ function init() {
       }
     }
   }
-  
 
-  function bombsCloseToMe(indexOfTheBomb){ // this function find how many bombs are close to every cell
+
+  function bombsCloseToMe(indexOfTheBomb) { // this function find how many bombs are close to every cell
     const nearby = whoIsCloseToMe(indexOfTheBomb)
-    for (let i = 0; i < nearby.length; i++){
+    for (let i = 0; i < nearby.length; i++) {
       cellsStatusInfo[nearby[i]].nBombsClose++
     }
 
   }
 
-  function whoIsCloseToMe(index){         // this function returns an array of cell close to the given index
-    const  column = cellsStatusInfo[index].column    //these return me the column 
+  function whoIsCloseToMe(index) {         // this function returns an array of cell close to the given index
+    const column = cellsStatusInfo[index].column    //these return me the column 
     const row = cellsStatusInfo[index].row        //these return me the row 
     let cellDistance
     const closeToMe = []
@@ -189,24 +189,24 @@ function init() {
     if (row > 0 && column > 0) {
       cellDistance = -(width + 1)
       closeToMe.push(cellsStatusInfo[index + cellDistance].idCell)
-    }  
+    }
     // up-center
     if (row > 0) {
       cellDistance = -(width)
-      closeToMe.push(cellsStatusInfo[index + cellDistance].idCell)   
-    } 
+      closeToMe.push(cellsStatusInfo[index + cellDistance].idCell)
+    }
     //up-right
     if (row > 0 && column < width - 1) {
       cellDistance = -(width - 1)
-      closeToMe.push(cellsStatusInfo[index + cellDistance].idCell)   
-    } 
+      closeToMe.push(cellsStatusInfo[index + cellDistance].idCell)
+    }
     //left
-    if (column > 0){
-      cellDistance =  - 1
+    if (column > 0) {
+      cellDistance = - 1
       closeToMe.push(cellsStatusInfo[index + cellDistance].idCell)
     }
     //right
-    if (column < width - 1){
+    if (column < width - 1) {
       cellDistance = + 1
       closeToMe.push(cellsStatusInfo[index + cellDistance].idCell)
     }
@@ -227,8 +227,8 @@ function init() {
     }
     return closeToMe
   }
-  
-  function addFlag(event){            //this event add and remove flags
+
+  function addFlag(event) {            //this event add and remove flags
     event.preventDefault()
     const selected = event.target.dataset.id
     if (cellsStatusInfo[selected].isCovered === true) {
@@ -242,20 +242,20 @@ function init() {
         cellsStatusInfo[selected].haveFlag = false
         nFlags++
       }
-      flagsMonitor.innerHTML = nFlags 
+      flagsMonitor.innerHTML = nFlags
     }
   }
-  function misflagged (selected) {      // set UI to misflagged
+  function misflagged(selected) {      // set UI to misflagged
     cellsStatusInfo[selected].cell.classList.remove('flagged')
     cellsStatusInfo[selected].cell.classList.remove('covered')
     cellsStatusInfo[selected].cell.classList.add('misflagged')
   }
 
   function numbersAndEmptySpaces() {      //this manage the UI of the empty cells bombs and numbers 
-    for (let i = 0; i < cellCount; i++){
+    for (let i = 0; i < cellCount; i++) {
       switch (cellsStatusInfo[i].nBombsClose) {
         case 0:
-          if (cellsStatusInfo[i].haveBomb === true){
+          if (cellsStatusInfo[i].haveBomb === true) {
             cellsStatusInfo[i].cell.classList.add('bomb')
           } else {
             cellsStatusInfo[i].cell.classList.add('uncovered')
@@ -290,29 +290,27 @@ function init() {
           break
       }
     }
-    
-    
+
+
   }
 
-  function clickedOnBomb (selected) {         //this manage when the user click on a bomb
-    console.log(cellsStatusInfo[selected])
+  function clickedOnBomb(selected) {         //this manage when the user click on a bomb
     cellsStatusInfo[selected].cell.classList.remove('bomb')
     cellsStatusInfo[selected].cell.classList.add('death')
-    audio.src = '../assets/audio/Minesweeper_Game_Over.ogg'
+    audio.volume = 0.08
     audio.play()
-    console.log(cellsStatusInfo[selected])
-    for (let i = 0; i < cellCount; i++){
-      if (cellsStatusInfo[i].haveBomb === false && cellsStatusInfo[i].haveFlag === true){
+    for (let i = 0; i < cellCount; i++) {
+      if (cellsStatusInfo[i].haveBomb === false && cellsStatusInfo[i].haveFlag === true) {
         misflagged(i)
       }
-      if (cellsStatusInfo[i].haveBomb === true && cellsStatusInfo[i].isCovered === true){
+      if (cellsStatusInfo[i].haveBomb === true && cellsStatusInfo[i].isCovered === true) {
         cellsStatusInfo[i].cell.classList.remove('flagged')
         cellsStatusInfo[i].isCovered = false
         cellsStatusInfo[i].cell.classList.remove('covered')
       }
       //all the cells became not clickable
       cellsStatusInfo[i].cell.classList.add('disabled')
-      
+
     }
     // stop the timer
     timerStop()
@@ -321,69 +319,69 @@ function init() {
     resetBtn.classList.add('face-dead')
   }
 
-  function timerStart (){     //handle the timer when start
+  function timerStart() {     //handle the timer when start
     timerId = setInterval(() => {
       timerMonitor.innerHTML++
     }, 1000)
   }
-  function timerStop (){  //handle the timer when stop
+  function timerStop() {  //handle the timer when stop
     clearInterval(timerId)
     timerId = null
   }
-  function timerReset (){    //to reset the timer
+  function timerReset() {    //to reset the timer
     timerStop()
     timerMonitor.innerHTML = 0
   }
-  function reset(){         //to reset the game (only the grid)
+  function reset() {         //to reset the game (only the grid)
     timerReset()
     nFlags = nBombs
     flagsMonitor.innerHTML = nFlags
     cellsStatusInfo = []
-    firstClick = true 
+    firstClick = true
     timerId = null
     cellsOpened = 0
-    if (resetBtn.classList.value === 'face-win'){
+    if (resetBtn.classList.value === 'face-win') {
       resetBtn.classList.remove('face-win')
       resetBtn.classList.add('face-button')
     }
-    if (resetBtn.classList.value === 'face-dead'){
+    if (resetBtn.classList.value === 'face-dead') {
       resetBtn.classList.remove('face-dead')
       resetBtn.classList.add('face-button')
     }
 
-    while (grid.firstChild){
+    while (grid.firstChild) {
       grid.removeChild(grid.lastChild)
     }
     createGrid()
     randomBombPosition()
-    cellsStatusInfo.forEach(cells => 
+    cellsStatusInfo.forEach(cells =>
       cells.cell.addEventListener('click', game))
-    cellsStatusInfo.forEach(cells =>  
-      cells.cell.addEventListener('mousedown',oohFaceDown))
-    cellsStatusInfo.forEach(cells =>  
-      cells.cell.addEventListener('mouseup',oohFaceUp))
-    cellsStatusInfo.forEach(cells => 
+    cellsStatusInfo.forEach(cells =>
+      cells.cell.addEventListener('mousedown', oohFaceDown))
+    cellsStatusInfo.forEach(cells =>
+      cells.cell.addEventListener('mouseup', oohFaceUp))
+    cellsStatusInfo.forEach(cells =>
       cells.cell.addEventListener('contextmenu', addFlag))
     resetBtn.addEventListener('click', reset)
-    newGame.addEventListener('click', reset) 
+    newGame.addEventListener('click', reset)
 
   }
 
-  function game (event){            //this handle each click of the game
+  function game(event) {            //this handle each click of the game
     const selected = event.target.dataset.id
     uncoverCell(selected)
     numbersAndEmptySpaces()
-    if (cellsStatusInfo[selected].haveBomb === true){
+    if (cellsStatusInfo[selected].haveBomb === true) {
       clickedOnBomb(selected)
     }
-    if (cellsOpened === cellCount - nBombs){
+    if (cellsOpened === cellCount - nBombs) {
       timerStop()
       resetBtn.classList.remove('face-button')
       resetBtn.classList.add('face-win')
     }
   }
   //! to implement better UI with shadows in the box
-  function oohFaceDown(event){
+  function oohFaceDown(event) {
     event.preventDefault()
     resetBtn.classList.remove('face-button')
     resetBtn.classList.add('face-ooh')
@@ -391,12 +389,12 @@ function init() {
     event.target.classList.add('clicked')
 
   }
-  function oohFaceUp(event){
+  function oohFaceUp(event) {
     resetBtn.classList.remove('face-ooh')
     resetBtn.classList.add('face-button')
     event.target.classList.remove('clicked')
     event.target.classList.add('covered')
-    
+
   }
 
 
@@ -405,21 +403,21 @@ function init() {
 
   createGrid()
   randomBombPosition()
-  
-  
-  cellsStatusInfo.forEach(cells => 
+
+
+  cellsStatusInfo.forEach(cells =>
     cells.cell.addEventListener('click', game))
-  cellsStatusInfo.forEach(cells =>  
-    cells.cell.addEventListener('mousedown',oohFaceDown))
-  cellsStatusInfo.forEach(cells =>  
-    cells.cell.addEventListener('mouseup',oohFaceUp))
-  cellsStatusInfo.forEach(cells => 
+  cellsStatusInfo.forEach(cells =>
+    cells.cell.addEventListener('mousedown', oohFaceDown))
+  cellsStatusInfo.forEach(cells =>
+    cells.cell.addEventListener('mouseup', oohFaceUp))
+  cellsStatusInfo.forEach(cells =>
     cells.cell.addEventListener('contextmenu', addFlag))
   resetBtn.addEventListener('click', reset)
-  newGame.addEventListener('click', reset) 
-  levels.forEach(level => 
+  newGame.addEventListener('click', reset)
+  levels.forEach(level =>
     level.addEventListener('click', changeLevel))
 
 }
-  
-window.addEventListener('DOMContentLoaded',init)
+
+window.addEventListener('DOMContentLoaded', init)

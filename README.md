@@ -20,7 +20,7 @@ Enjoy!
 
 ---
 
-## Get Started
+## Let's Get Started
 
 ### Prerequisites
 

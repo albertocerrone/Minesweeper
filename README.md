@@ -31,7 +31,8 @@ Timeline: 7 days
 
 ---
 ## Overview
-![minesweeper](assets/readme/minesweeper.gif)
+![minesweeper](assets/readme/minesweeper.gif)<br>
+
 This project is the representation of Minesweeper from Windows 95. <br>
 As simple as it sounds, this was my first project in General Assembly's Software Engineering Immersive course. It was an individual project assigned to us after three weeks of learning and built in less than a week.<br>
 As much as I would love to improve the code, I'm deciding to keep it as it is for two reasons:

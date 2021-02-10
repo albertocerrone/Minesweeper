@@ -44,7 +44,7 @@ Talking about nostalgia, I decided to build Minesweeper from Windows 95 because 
 If you are going to play this game, I hope you will have a good jump into the past and have good fun.<br>
 Enjoy!
 
-[Back To The Top](#Minesweeper-💣)
+[Back To The Top](#minesweeper-)
 
 ---
 
@@ -88,7 +88,7 @@ If you desire to reset the game, you can click on the smiley face.
 You can understand better the games rules from this Youtube's video:
 [<i>How to play Minesweeper by Eric Buffington</i>](https://www.youtube.com/watch?v=7B85WbEiYf4)
 
-[Back To The Top](#Minesweeper-💣)
+[Back To The Top](#minesweeper-)
 
 ---
 
@@ -156,7 +156,7 @@ function changeLevel(event) {        //this function change the UI and the logic
 ```
 
 
-[Back To The Top](#Minesweeper-💣)
+[Back To The Top](#minesweeper-)
 
 ### Bugs, Blockers & Wins
 
@@ -230,7 +230,7 @@ I've used this function to find the cells that are close to the selected one and
   - open the cells that are around 
   - find how many bombs are around each cell.
 
-[Back To The Top](#Minesweeper-💣)
+[Back To The Top](#minesweeper-)
 
 ### Future Features & Key Learning
 
@@ -249,7 +249,7 @@ To improve even more the code and make it cleaner, I would refactor app.js in sm
 This would help readability and future maintenance.
 
 
-[Back To The Top](#Minesweeper-💣)
+[Back To The Top](#minesweeper-)
 
 ---
 
@@ -263,13 +263,13 @@ This would help readability and future maintenance.
 If you have suggestions for improving this project, please [open an issue on GitHub](https://github.com/albertocerrone/Minesweeper/issues/new).<br>
 I will fix just bugs but any suggestions you'll give me to improve the functionality of the game will be used as form of learning but not applied to the code.
 
-[Back To The Top](#Minesweeper-💣)
+[Back To The Top](#minesweeper-)
 
 ## License & Copyright
 
 This work is dedicated to the [public domain (CC0 1.0)](http://creativecommons.org/publicdomain/zero/1.0/). To the extent possible under law, Alberto Cerrone has waived all copyright and related or neighboring rights to the Minesweeper Project. See the LICENSE file for all the legalese.
 
-[Back To The Top](#Minesweeper-💣)
+[Back To The Top](#minesweeper-)
 
 ## Author Info
 
@@ -277,4 +277,4 @@ This work is dedicated to the [public domain (CC0 1.0)](http://creativecommons.o
 - LinkedIn - [Alberto Cerrone](http://www.linkedin.com/in/alberto-cerrone/)
 - Website - [Portfolio](http://albertocerrone.co.uk)
 
-[Back To The Top](#Minesweeper-💣)
+[Back To The Top](#minesweeper-)

@@ -167,7 +167,7 @@ One of the weak points of my project is the use of CSS classes to keep track of 
 document.querySelectorAll('.bomb').forEach((node) => node.classList.add('flagged'))
 document.querySelectorAll('.covered:not(.bomb)').forEach((node) => node.click())
 ``` 
-(Thank you, Andrew Webb, for let me realize this issue).<br>
+(Thank you, [Andrew Webb](https://github.com/androbwebb), for let me realize this issue).<br>
 
 Another thing that I'm not proud of is UI. The background is not responsive, and I didn't have the opportunity to style it better cause of the incoming deadline.
 
@@ -227,8 +227,8 @@ function whoIsCloseToMe(index) {
 }
 ```
 I've used this function to find the cells that are close to the selected one and this is being useful for two different cases:
-  - open the cells that are around 
-  - find how many bombs are around each cell.
+  - Open the cells that are around 
+  - Find how many bombs are around each cell.
 
 [Back To The Top](#minesweeper-)
 

@@ -266,7 +266,7 @@ I will fix just bugs but any suggestions you'll give me to improve the functiona
 
 ## License & Copyright
 
-This work is dedicated to the [public domain (CC0 1.0)](http://creativecommons.org/publicdomain/zero/1.0/). To the extent possible under law, Alberto Cerrone has waived all copyright and related or neighboring rights to the Minesweeper Project. See the LICENSE file for all the legalese.
+This work is dedicated to the [public domain (CC0 1.0)](http://creativecommons.org/publicdomain/zero/1.0/). To the extent possible under law, Alberto Cerrone has waived all copyright and related or neighbouring rights to the Minesweeper Project. See the LICENSE file for all the legalese.
 
 [Back To The Top](#Minesweeper-💣)
 

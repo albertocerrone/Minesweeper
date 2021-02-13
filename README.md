@@ -31,7 +31,8 @@ Timeline: 7 days
 
 ---
 ## Overview
-![minesweeper](assets/readme/minesweeper.gif)
+![minesweeper](assets/readme/minesweeper.gif)<br>
+
 This project is the representation of Minesweeper from Windows 95. <br>
 As simple as it sounds, this was my first project in General Assembly's Software Engineering Immersive course. It was an individual project assigned to us after three weeks of learning and built in less than a week.<br>
 As much as I would love to improve the code, I'm deciding to keep it as it is for two reasons:
@@ -43,7 +44,7 @@ Talking about nostalgia, I decided to build Minesweeper from Windows 95 because 
 If you are going to play this game, I hope you will have a good jump into the past and have good fun.<br>
 Enjoy!
 
-[Back To The Top](#Minesweeper-💣)
+[Back To The Top](#minesweeper-)
 
 ---
 
@@ -87,7 +88,7 @@ If you desire to reset the game, you can click on the smiley face.
 You can understand better the games rules from this Youtube's video:
 [<i>How to play Minesweeper by Eric Buffington</i>](https://www.youtube.com/watch?v=7B85WbEiYf4)
 
-[Back To The Top](#Minesweeper-💣)
+[Back To The Top](#minesweeper-)
 
 ---
 
@@ -155,7 +156,7 @@ function changeLevel(event) {        //this function change the UI and the logic
 ```
 
 
-[Back To The Top](#Minesweeper-💣)
+[Back To The Top](#minesweeper-)
 
 ### Bugs, Blockers & Wins
 
@@ -166,7 +167,7 @@ One of the weak points of my project is the use of CSS classes to keep track of 
 document.querySelectorAll('.bomb').forEach((node) => node.classList.add('flagged'))
 document.querySelectorAll('.covered:not(.bomb)').forEach((node) => node.click())
 ``` 
-(Thank you, Andrew Webb, for let me realize this issue).<br>
+(Thank you, [Andrew Webb](https://github.com/androbwebb), for let me realize this issue).<br>
 
 Another thing that I'm not proud of is UI. The background is not responsive, and I didn't have the opportunity to style it better cause of the incoming deadline.
 
@@ -226,10 +227,10 @@ function whoIsCloseToMe(index) {
 }
 ```
 I've used this function to find the cells that are close to the selected one and this is being useful for two different cases:
-  - open the cells that are around 
-  - find how many bombs are around each cell.
+  - Open the cells that are around 
+  - Find how many bombs are around each cell.
 
-[Back To The Top](#Minesweeper-💣)
+[Back To The Top](#minesweeper-)
 
 ### Future Features & Key Learning
 
@@ -248,7 +249,7 @@ To improve even more the code and make it cleaner, I would refactor app.js in sm
 This would help readability and future maintenance.
 
 
-[Back To The Top](#Minesweeper-💣)
+[Back To The Top](#minesweeper-)
 
 ---
 
@@ -262,13 +263,13 @@ This would help readability and future maintenance.
 If you have suggestions for improving this project, please [open an issue on GitHub](https://github.com/albertocerrone/Minesweeper/issues/new).<br>
 I will fix just bugs but any suggestions you'll give me to improve the functionality of the game will be used as form of learning but not applied to the code.
 
-[Back To The Top](#Minesweeper-💣)
+[Back To The Top](#minesweeper-)
 
 ## License & Copyright
 
 This work is dedicated to the [public domain (CC0 1.0)](http://creativecommons.org/publicdomain/zero/1.0/). To the extent possible under law, Alberto Cerrone has waived all copyright and related or neighbouring rights to the Minesweeper Project. See the LICENSE file for all the legalese.
 
-[Back To The Top](#Minesweeper-💣)
+[Back To The Top](#minesweeper-)
 
 ## Author Info
 
@@ -276,4 +277,4 @@ This work is dedicated to the [public domain (CC0 1.0)](http://creativecommons.o
 - LinkedIn - [Alberto Cerrone](http://www.linkedin.com/in/alberto-cerrone/)
 - Website - [Portfolio](http://albertocerrone.co.uk)
 
-[Back To The Top](#Minesweeper-💣)
+[Back To The Top](#minesweeper-)

@@ -92,7 +92,7 @@ You can understand better the games rules from this Youtube's video:
 
 ---
 
-## How I made it
+## How I Made It
 
 ### Technologies Used
 

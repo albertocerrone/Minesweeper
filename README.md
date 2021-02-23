@@ -4,7 +4,7 @@
 by [Alberto Cerrone](www.linkedin.com/in/alberto-cerrone)<br>
 Timeline: 7 days
 
-👉 [<b>Try me</b>](https://bit.ly/3qhLWmg) 👈
+👉 [<b>Try Me</b>](https://bit.ly/3qhLWmg) 👈
 
 ---
 
